@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="ad.size" content="width=300,height=250">
+  <meta name="viewport" content="width=300,height=250">
+  <title>How-To Geek — Deals Center 300×250</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 300px; height: 250px; overflow: hidden;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #ad-root {
+      width: 300px; height: 250px; position: relative;
+      border: 1px solid #1a1f2e;
+      background: linear-gradient(160deg, #0f1218 0%, #1a2230 50%, #121820 100%);
+      overflow: hidden;
+    }
+    #ad-root::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 106, 0, 0.18) 0%, transparent 45%);
+      animation: glow-breathe 3s ease-in-out infinite;
+    }
+    @keyframes glow-breathe {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    a.exit {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 100%; height: 100%; padding: 20px 18px 18px;
+      position: relative; z-index: 2;
+      text-decoration: none; color: #eef2f8; text-align: center; cursor: pointer;
+    }
+    .logo {
+      font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #9aa3b5; margin-bottom: 10px;
+    }
+    .logo strong { color: #ff6a00; letter-spacing: 0.08em; }
+    h1 {
+      font-size: 22px; font-weight: 800; line-height: 1.15; margin-bottom: 10px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    }
+    h1 .line2 { display: block; color: #c8d0e0; font-size: 0.92em; font-weight: 700; margin-top: 4px; }
+    p.tag {
+      font-size: 13px; line-height: 1.45; color: #aeb8ca; max-width: 240px; margin-bottom: 16px;
+    }
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 42px; padding: 0 28px;
+      font-size: 15px; font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #ff6a22 0%, #d84300 100%);
+      border-radius: 8px;
+      animation: cta-bounce 2.2s ease-in-out infinite;
+    }
+    @keyframes cta-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    .ring {
+      position: absolute; border: 2px solid rgba(255, 106, 34, 0.25);
+      border-radius: 50%; pointer-events: none; z-index: 1;
+      width: 180px; height: 180px; left: 50%; top: 42%; margin: -90px 0 0 -90px;
+      animation: ring-expand 2.8s ease-out infinite;
+    }
+    @keyframes ring-expand {
+      0% { transform: scale(0.6); opacity: 0.6; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #ad-root::after, .cta, .ring { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="ad-root" role="img" aria-label="Deals Center — hand-picked tech deals. Tap to shop.">
+    <div class="ring" aria-hidden="true"></div>
+    <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer">
+      <div class="logo">How-To Geek <strong>Deals Center</strong></div>
+      <h1>Deals worth your time<span class="line2">Curated by our editors</span></h1>
+      <p class="tag">Discounts on laptops, smart home, accessories &amp; more — updated regularly.</p>
+      <span class="cta">See today’s deals</span>
+    </a>
+  </div>
+  <script>
+    var clickTag = 'https://www.howtogeek.com/deals/';
+    document.getElementById('click').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open(clickTag, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>

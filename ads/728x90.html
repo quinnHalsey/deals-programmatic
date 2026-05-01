@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="ad.size" content="width=728,height=90">
+  <meta name="viewport" content="width=728,height=90">
+  <title>How-To Geek — Deals Center 728×90</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 728px; height: 90px; overflow: hidden;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #ad-root {
+      width: 728px; height: 90px;
+      position: relative;
+      border: 1px solid #1a1f2e;
+      background: linear-gradient(105deg, #12151c 0%, #1a2230 45%, #151a24 100%);
+      overflow: hidden;
+    }
+    #ad-root::before {
+      content: "";
+      position: absolute; inset: -40%;
+      background: radial-gradient(ellipse at 20% 50%, rgba(255, 106, 0, 0.12) 0%, transparent 55%),
+                  radial-gradient(ellipse at 85% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+      animation: bg-drift 8s ease-in-out infinite alternate;
+    }
+    @keyframes bg-drift { from { transform: translate(0, 0) rotate(0deg); } to { transform: translate(2%, -1%) rotate(1deg); } }
+    a.exit {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; height: 100%; padding: 0 20px 0 24px;
+      position: relative; z-index: 2;
+      text-decoration: none; color: #f4f6fa; cursor: pointer;
+    }
+    .brand {
+      font-weight: 800; font-size: 15px; letter-spacing: 0.02em;
+      color: #e8ecf4; white-space: nowrap;
+    }
+    .brand span { color: #ff6a00; }
+    .copy {
+      flex: 1; text-align: center; padding: 0 16px;
+      font-size: 17px; font-weight: 600; line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .copy em {
+      font-style: normal; color: #ffb380;
+      background: linear-gradient(90deg, #ffb380, #fff0e0, #ffb380);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 2.5s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 132px; height: 40px; padding: 0 18px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.03em;
+      color: #fff;
+      background: linear-gradient(135deg, #ff6a22 0%, #e04d0a 100%);
+      border-radius: 6px;
+      box-shadow: 0 0 0 0 rgba(255, 106, 34, 0.45);
+      animation: cta-pulse 2s ease-in-out infinite;
+    }
+    @keyframes cta-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 106, 34, 0.45); transform: scale(1); }
+      50% { box-shadow: 0 0 18px 4px rgba(255, 106, 34, 0.25); transform: scale(1.02); }
+    }
+    .spark {
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255, 200, 120, 0.9); z-index: 1; pointer-events: none;
+      animation: floaty 3s ease-in-out infinite;
+    }
+    .spark:nth-child(1) { left: 12%; top: 18%; animation-delay: 0s; }
+    .spark:nth-child(2) { left: 78%; top: 72%; animation-delay: 0.8s; width: 4px; height: 4px; opacity: 0.7; }
+    .spark:nth-child(3) { left: 55%; top: 12%; animation-delay: 1.4s; width: 3px; height: 3px; }
+    @keyframes floaty {
+      0%, 100% { opacity: 0.35; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-6px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #ad-root::before, .copy em, .cta, .spark { animation: none !important; }
+      .copy em { color: #ffb380; background: none; -webkit-background-clip: unset; background-clip: unset; }
+    }
+  </style>
+</head>
+<body>
+  <div id="ad-root" role="img" aria-label="How-To Geek Deals Center — curated tech deals. Shop now.">
+    <span class="spark" aria-hidden="true"></span>
+    <span class="spark" aria-hidden="true"></span>
+    <span class="spark" aria-hidden="true"></span>
+    <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer">
+      <div class="brand">How-To Geek <span>Deals</span></div>
+      <div class="copy">Editor-tested picks — <em>real savings</em> on gear you want</div>
+      <span class="cta">Shop Deals Center</span>
+    </a>
+  </div>
+  <script>
+    var clickTag = 'https://www.howtogeek.com/deals/';
+    document.getElementById('click').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open(clickTag, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>
