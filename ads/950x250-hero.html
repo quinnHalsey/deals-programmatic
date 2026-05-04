@@ -39,14 +39,15 @@
                 height: 250px;
                 z-index: 0;
                 will-change: transform;
-                animation: camera-pan 0.95s cubic-bezier(0.33, 0.06, 0.13, 1) 1.38s forwards;
+                animation: camera-pan 0.95s cubic-bezier(0.33, 0.06, 0.13, 1) 4s forwards;
             }
             @keyframes camera-pan {
                 from {
                     transform: translateX(0);
                 }
                 to {
-                    transform: translateX(-368px);
+                    /* Left disc right edge = 376px in pan space; need < 0 on screen */
+                    transform: translateX(-392px);
                 }
             }
             .sr-only {
@@ -81,12 +82,12 @@
             .stage--left {
                 left: -66px;
             }
-            /* Fully past 950 until pan; ring center ~821px in frame after pan */
+            /* Fully past 950 until pan; ring center ~797px in frame after pan */
             .stage--right {
                 left: 968px;
                 z-index: 1;
                 opacity: 1;
-                animation: stage-enter-right 0.85s cubic-bezier(0.33, 0.06, 0.13, 1) 1.38s both;
+                animation: stage-enter-right 0.85s cubic-bezier(0.33, 0.06, 0.13, 1) 4s both;
             }
             @keyframes stage-enter-right {
                 from {
@@ -113,14 +114,18 @@
                 width: 442px;
                 height: 442px;
                 background: #f7941d;
-                animation: expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) forwards;
+                animation:
+                    expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) forwards,
+                    expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 3.04s reverse forwards;
             }
             .disc--gray {
                 z-index: 2;
                 width: 422px;
                 height: 422px;
                 background: #d9d9d9;
-                animation: expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.14s forwards;
+                animation:
+                    expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.14s forwards,
+                    expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 2.9s reverse forwards;
             }
             .disc--photo {
                 z-index: 3;
@@ -128,17 +133,19 @@
                 height: 402px;
                 overflow: hidden;
                 box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
-                animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.32s forwards;
+                animation:
+                    expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.32s forwards,
+                    expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 2.76s reverse forwards;
             }
             /* Second product: same expand curve, starts as camera pans */
             .stage--right .disc--orange {
-                animation: expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 1.42s forwards;
+                animation: expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 4.04s forwards;
             }
             .stage--right .disc--gray {
-                animation: expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 1.56s forwards;
+                animation: expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 4.18s forwards;
             }
             .stage--right .disc--photo {
-                animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 1.74s forwards;
+                animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 4.36s forwards;
             }
             .disc--photo img {
                 display: block;
@@ -178,13 +185,16 @@
             .pill-off--left {
                 left: 310px;
                 transform-origin: 38% 50%;
-                animation: pill-bounce-in 0.52s ease-out 0.8s forwards;
+                animation:
+                    pill-bounce-in 0.52s ease-out 0.8s forwards,
+                    pill-bounce-in 0.52s ease-in 3.02s reverse forwards;
             }
+            /* Same 66px inset from inward disc edge as left (376−310 = 66; 968−66) */
             .pill-off--right {
-                left: 1000px;
+                left: 920px;
                 transform-origin: 62% 50%;
                 background: #14532d;
-                animation: pill-bounce-in 0.52s ease-out 2.2s forwards;
+                animation: pill-bounce-in 0.52s ease-out 4.82s forwards;
             }
             @keyframes pill-bounce-in {
                 0% {
@@ -287,26 +297,26 @@
                     transform: translateY(0);
                 }
             }
-            .hero-rise {
+            /* .hero-rise {
                 opacity: 0;
-                animation: hero-rise 0.52s cubic-bezier(0.22, 1, 0.32, 1) forwards;
+                animation: hero-rise 0.58s cubic-bezier(0.22, 1, 0.32, 1) forwards;
             }
             .hero-rise--1 {
-                animation-delay: 0s;
+                animation-delay: 0.25s;
             }
             .hero-rise--2 {
-                animation-delay: 0.16s;
+                animation-delay: 0.75s;
             }
             .hero-rise--3 {
-                animation-delay: 0.32s;
+                animation-delay: 1.25s;
             }
             .hero-rise--4 {
-                animation-delay: 0.48s;
-            }
+                animation-delay: 1.75s;
+            } */
             @media (prefers-reduced-motion: reduce) {
                 .pan-layer {
                     animation: none !important;
-                    transform: translateX(-368px) !important;
+                    transform: translateX(-392px) !important;
                 }
                 .stage--right {
                     animation: none !important;
