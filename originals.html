@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deals Center ads — preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 20px 40px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #e8eaef;
+      color: #1a1f2e;
+    }
+    h1 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 0 0 24px;
+    }
+    p.note {
+      margin: 0 0 20px;
+      font-size: 0.8125rem;
+      color: #5c6578;
+      max-width: 72ch;
+    }
+    .row {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .unit {
+      flex: 0 0 auto;
+      background: #fff;
+      color: #6b7588;
+      border-radius: 10px;
+      padding: 12px 12px 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .unit-dark {
+        color: white;
+        background: #101010;
+    }
+    .unit h2 {
+      margin: 0 0 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .unit iframe {
+      display: block;
+      border: 0;
+      vertical-align: top;
+      background: #ccc;
+    }
+    .units-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .ad-dark-frame {
+      background: #12151c;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+    .ad-dark-frame iframe {
+      display: block;
+      border: 0;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+  <h1>Deals Center Ads — preview</h1>
+  <div class="row">
+    <div class="units-row">
+      <div class="unit">
+        <h2>320 × 50</h2>
+        <iframe src="ads/320x50.html" width="320" height="50" title="320x50 ad"></iframe>
+      </div>
+      <div class="unit unit-dark">
+        <h2>320 × 50 - Light</h2>
+        <iframe src="ads/320x50-light.html" width="320" height="50" title="320x50 light ad"></iframe>
+      </div>
+    </div>
+    <div class="units-row">
+      <div class="unit">
+        <h2>300 × 250</h2>
+        <iframe src="ads/300x250.html" width="300" height="250" title="300x250 ad"></iframe>
+      </div>
+      <div class="unit unit-dark">
+        <h2>300 × 250 - Light</h2>
+        <iframe src="ads/300x250xlight.html" width="300" height="250" title="300x250 light ad"></iframe>
+      </div>
+    </div>
+    <div class="units-row">
+      <div class="unit">
+        <h2>300 × 250 (ticker)</h2>
+        <iframe
+          id="ticker-preview-iframe"
+          src="ads/300x250xticker.html"
+          width="300"
+          height="250"
+          title="300x250 newsletter ticker ad"
+        ></iframe>
+      </div>
+      <div class="unit unit-dark">
+        <h2>300 × 250 (ticker) - Light</h2>
+        <iframe
+          id="ticker-preview-iframe-light"
+          src="ads/300x250xtickerxlight.html"
+          width="300"
+          height="250"
+          title="300x250 newsletter ticker light ad"
+        ></iframe>
+      </div>
+    </div>
+    <div class="units-row">
+      <div class="unit">
+        <h2>728 × 90</h2>
+        <iframe src="ads/728x90.html" width="728" height="90" title="728x90 ad"></iframe>
+      </div>
+      <div class="unit unit-dark">
+        <h2>728 × 90 - Light</h2>
+        <iframe src="ads/728x90xlight.html" width="728" height="90" title="728x90 light ad"></iframe>
+      </div>
+    </div>
+    <div class="units-row">
+      <div class="unit">
+        <h2>970 × 250 — hero motion (categories)</h2>
+        <iframe src="ads/970x250-hero-motion.html" width="970" height="250" title="970x250 hero motion ad"></iframe>
+      </div>
+    </div>
+    <!-- <div class="units-row">
+      <div class="unit">
+        <h2>970 × 250</h2>
+        <iframe src="ads/970x250.html" width="970" height="250" title="970x250 ad"></iframe>
+      </div>
+      <div class="unit unit-dark">
+        <h2>970 × 250 - Light</h2>
+        <iframe src="ads/970x250-light.html" width="970" height="250" title="970x250 light ad"></iframe>
+      </div>
+    </div> -->
+    <div class="units-row">
+      <div class="unit">
+        <h2>300 × 600</h2>
+        <iframe src="ads/300x600.html" width="300" height="600" title="300x600 ad"></iframe>
+      </div>
+      <!-- <div class="unit unit-dark">
+        <h2>300 × 600 - Light</h2>
+        <iframe src="ads/300x600xlight.html" width="300" height="600" title="300x600 light ad"></iframe>
+      </div> -->
+    </div>
+
+  </div>
+  <script>
+    (function () {
+      function loadSrcdoc(id, url) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        fetch(url)
+          .then(function (r) {
+            if (!r.ok) throw new Error('bad status');
+            return r.text();
+          })
+          .then(function (html) {
+            el.removeAttribute('src');
+            el.srcdoc = html;
+          })
+          .catch(function () {});
+      }
+      loadSrcdoc('ticker-preview-iframe', 'ads/300x250xticker.html');
+      loadSrcdoc('ticker-preview-iframe-light', 'ads/300x250xtickerxlight.html');
+    })();
+  </script>
+</body>
+</html>
