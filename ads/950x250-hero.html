@@ -30,6 +30,25 @@
                 background: #101010;
                 border: 1px solid #1a1f2e;
             }
+            /* Wider world so right stage starts off-canvas; camera = translateX pan */
+            .pan-layer {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1480px;
+                height: 250px;
+                z-index: 0;
+                will-change: transform;
+                animation: camera-pan 0.95s cubic-bezier(0.33, 0.06, 0.13, 1) 1.38s forwards;
+            }
+            @keyframes camera-pan {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(-368px);
+                }
+            }
             .sr-only {
                 position: absolute;
                 width: 1px;
@@ -57,7 +76,27 @@
                 overflow: hidden;
                 z-index: 0;
                 top: -100px;
-                left: -7%;
+            }
+            /* Match original -7% of 950 ≈ -66px ring anchor from left */
+            .stage--left {
+                left: -66px;
+            }
+            /* Fully past 950 until pan; ring center ~821px in frame after pan */
+            .stage--right {
+                left: 968px;
+                z-index: 1;
+                opacity: 1;
+                animation: stage-enter-right 0.85s cubic-bezier(0.33, 0.06, 0.13, 1) 1.38s both;
+            }
+            @keyframes stage-enter-right {
+                from {
+                    transform: translateX(120px);
+                    opacity: 0.85;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
             }
             /* Rings centered on left edge (x = 0); 10px stroke between rings */
             .disc {
@@ -91,6 +130,16 @@
                 box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
                 animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.32s forwards;
             }
+            /* Second product: same expand curve, starts as camera pans */
+            .stage--right .disc--orange {
+                animation: expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 1.42s forwards;
+            }
+            .stage--right .disc--gray {
+                animation: expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 1.56s forwards;
+            }
+            .stage--right .disc--photo {
+                animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 1.74s forwards;
+            }
             .disc--photo img {
                 display: block;
                 width: 100%;
@@ -108,7 +157,6 @@
             }
             .pill-off {
                 position: absolute;
-                left: 310px;
                 top: 40px;
                 z-index: 4;
                 transform: scale(0);
@@ -126,8 +174,17 @@
                 white-space: nowrap;
                 pointer-events: none;
                 opacity: 0;
-                /* Photo ring ends ~1.24s; run in near tail of reveal */
+            }
+            .pill-off--left {
+                left: 310px;
+                transform-origin: 38% 50%;
                 animation: pill-bounce-in 0.52s ease-out 0.8s forwards;
+            }
+            .pill-off--right {
+                left: 1000px;
+                transform-origin: 62% 50%;
+                background: #14532d;
+                animation: pill-bounce-in 0.52s ease-out 2.2s forwards;
             }
             @keyframes pill-bounce-in {
                 0% {
@@ -156,7 +213,8 @@
                 position: absolute;
                 z-index: 5;
                 left: 402px;
-                right: 0;
+                width: 548px;
+                right: auto;
                 top: 0;
                 bottom: 0;
                 display: flex;
@@ -246,6 +304,15 @@
                 animation-delay: 0.48s;
             }
             @media (prefers-reduced-motion: reduce) {
+                .pan-layer {
+                    animation: none !important;
+                    transform: translateX(-368px) !important;
+                }
+                .stage--right {
+                    animation: none !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
                 .disc {
                     animation: none !important;
                     transform: translate(-50%, -50%) scale(1) !important;
@@ -266,28 +333,38 @@
     <body>
         <div id="ad-root" role="img" aria-label="How-To Geek Deals Center. Shop all deals.">
             <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open deal"></a>
-            <p class="sr-only">Mobile power bank. Fits in your pocker. 25% OFF</p>
-            <div class="stage" aria-hidden="true">
-                <div class="disc disc--orange"></div>
-                <div class="disc disc--gray"></div>
-                <div class="disc disc--photo">
-                    <img alt="" width="210" height="210" decoding="async" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/05/baseus-picogo-am52-magsafe-power-bank-edited.jpg?q=49&amp;fit=crop&amp;w=400&amp;dpr=2" />
+            <p class="sr-only">Mobile power bank. Twenty five percent off. MacBook Air. Save one hundred fifty dollars.</p>
+            <div class="pan-layer" aria-hidden="true">
+                <div class="stage stage--left">
+                    <div class="disc disc--orange"></div>
+                    <div class="disc disc--gray"></div>
+                    <div class="disc disc--photo">
+                        <img alt="" width="210" height="210" decoding="async" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/05/baseus-picogo-am52-magsafe-power-bank-edited.jpg?q=49&amp;fit=crop&amp;w=400&amp;dpr=2" />
+                    </div>
                 </div>
+                <div class="stage stage--right">
+                    <div class="disc disc--orange"></div>
+                    <div class="disc disc--gray"></div>
+                    <div class="disc disc--photo">
+                        <img alt="" width="210" height="210" decoding="async" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2025/06/m4-macbook-air-getting-put-into-a-bag.jpg?q=49&amp;fit=crop&amp;w=380&amp;dpr=2" />
+                    </div>
+                </div>
+                <div class="hero-panel">
+                    <div class="hero-panel-title">
+                        <img class="hero-logo hero-rise hero-rise--1" src="../assets/htg-logo.svg" alt="" width="248" height="42" decoding="async" />
+                        <p class="hero-title hero-rise hero-rise--2">Deals Center</p>
+                    </div>
+                    <p class="hero-sub hero-rise hero-rise--3">Deals worth your time. Curated by our editors.</p>
+                    <div class="hero-cta hero-rise hero-rise--4">
+                        <span>Shop All Deals</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="pill-off pill-off--left">25% OFF</div>
+                <div class="pill-off pill-off--right">$SAVE 150</div>
             </div>
-            <div class="hero-panel" aria-hidden="true">
-                <div class="hero-panel-title">
-                    <img class="hero-logo hero-rise hero-rise--1" src="../assets/htg-logo.svg" alt="" width="248" height="42" decoding="async" />
-                    <p class="hero-title hero-rise hero-rise--2">Deals Center</p>
-                </div>
-                <p class="hero-sub hero-rise hero-rise--3">Deals worth your time. Curated by our editors.</p>
-                <div class="hero-cta hero-rise hero-rise--4">
-                    <span>Shop All Deals</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                </div>
-            </div>
-            <div class="pill-off" aria-hidden="true">25% OFF</div>
         </div>
         <script>
             var clickTag = 'https://www.howtogeek.com/deals/';
