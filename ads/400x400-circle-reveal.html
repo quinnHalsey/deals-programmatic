@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="ad.size" content="width=400,height=400">
+  <meta name="viewport" content="width=400,height=400">
+  <title>How-To Geek — 400×400 circle reveal</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      background: #0f0f0f;
+    }
+    .stage {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+    }
+    /* Rings: each disk 20px larger in diameter than the one above → 10px stroke */
+    .disc {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transform-origin: center center;
+      will-change: transform;
+    }
+    .disc--orange {
+      z-index: 1;
+      width: 400px;
+      height: 400px;
+      background: #f7941d;
+      animation: expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) forwards;
+    }
+    .disc--gray {
+      z-index: 2;
+      width: 380px;
+      height: 380px;
+      background: #d9d9d9;
+      animation: expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.14s forwards;
+    }
+    .disc--photo {
+      z-index: 3;
+      width: 360px;
+      height: 360px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.32s forwards;
+    }
+    .disc--photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    @keyframes expand {
+      from {
+        transform: translate(-50%, -50%) scale(0);
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .disc {
+        animation: none !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage" role="img" aria-label="Product reveal with orange and gray rings.">
+    <div class="disc disc--orange" aria-hidden="true"></div>
+    <div class="disc disc--gray" aria-hidden="true"></div>
+    <div class="disc disc--photo">
+      <img
+        alt=""
+        width="360"
+        height="360"
+        decoding="async"
+        src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/05/baseus-picogo-am52-magsafe-power-bank-edited.jpg?q=49&amp;fit=crop&amp;w=380&amp;dpr=2">
+    </div>
+  </div>
+</body>
+</html>

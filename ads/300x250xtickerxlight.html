@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="ad.size" content="width=300,height=250">
+  <meta name="viewport" content="width=300,height=250">
+  <title>How-To Geek — Deals Center 300×250 (newsletter ticker, light)</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 300px; height: 250px; overflow: hidden;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #101010;
+    }
+    @keyframes deals-cta-ticker-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes deals-cta-btn-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 106, 34, 0.35); }
+      50% { box-shadow: 0 0 0 8px rgba(255, 106, 34, 0); }
+    }
+    #ad-root {
+      width: 300px; height: 250px; position: relative;
+      border: 1px solid #c8ced9;
+      background: linear-gradient(160deg, #e5e9f0 0%, #d6dbe6 50%, #e0e6ee 100%);
+ 
+      overflow: hidden;
+    }
+    #ad-root::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 106, 0, 0.1) 0%, transparent 45%);
+      animation: glow-breathe 3s ease-in-out infinite;
+      z-index: 1;
+    }
+    @keyframes glow-breathe {
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    a.exit {
+      display: flex; flex-direction: column; align-items: stretch;
+      width: 100%; height: 100%; padding: 0 0 6px;
+      position: relative; z-index: 2;
+      text-decoration: none; color: #1a1f2e; text-align: center; cursor: pointer;
+      padding-top: 8px;
+    }
+    .ticker-wrap {
+      width: 100%; height: 82px; flex-shrink: 0;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex; flex-direction: row; flex-wrap: nowrap;
+      width: max-content; height: 82px;
+      animation: deals-cta-ticker-scroll 42s linear infinite;
+    }
+    .ticker-seg {
+      display: flex; flex-direction: row; flex-shrink: 0;
+      height: 82px;
+    }
+    .deal-card {
+      position: relative; flex: 0 0 115px; width: 115px; height: 82px;
+      margin-right: 10px; border-radius: 7px; overflow: hidden;
+      background: #dfe4ec;
+      contain: layout style paint;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      border: 1px solid #bbc0c8;
+    }
+    .deal-card img {
+      display: block; width: 115px; height: 82px; object-fit: cover;
+      filter: blur(2px); transform: scale(1.06);
+    }
+    .deal-badge {
+      text-transform: uppercase;
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      z-index: 1;
+      font-size: 8px; font-weight: 800; letter-spacing: 0.35px; line-height: 1;
+      padding: 3px 6px; border-radius: 3px; white-space: nowrap;
+      color: #fff;
+      font-family: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+    .deal-badge--green { background-color: #2d8e3c; }
+    .deal-badge--orange { background-color: #e87400; }
+    .body {
+      flex: 1; display: flex; flex-direction: column;
+      padding: 24px;
+      min-height: 0;
+    }
+    .headline {
+      font-size: 24px; font-weight: 700; line-height: 1.15;
+      margin-bottom: 3px; color: #1a1f2e;
+    }
+    .sub {
+      font-size: 16px; line-height: 1.3; color: #5c6578; margin-bottom: 6px;
+    }
+    .cta-wrap {
+      margin-top: auto; padding-top: 2px;
+    }
+    .cta {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; max-width: 268px; margin: 0 auto;
+      min-height: 32px; padding: 6px 12px;
+      font-size: 12px; font-weight: 700; color: #fff;
+      background: linear-gradient(135deg, #ff6a22 0%, #d84300 100%);
+      border-radius: 8px;
+      box-shadow: 0 0 0 0 rgba(255, 106, 34, 0.35);
+      animation: deals-cta-btn-glow 2.5s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #ad-root::after, .ticker-track, .cta { animation: none !important; }
+      .cta { box-shadow: 0 0 0 0 rgba(255, 106, 34, 0.3); }
+    }
+  </style>
+</head>
+<body>
+  <div id="ad-root" role="img" aria-label="How-To Geek Deals Center — scrolling deal highlights and call to explore the Deals Center.">
+    <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer">
+      <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-seg">
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">$120 OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2025/03/blink-mini-2.jpg?q=49&amp;fit=crop&amp;w=180&amp;h=120&amp;dpr=2" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--orange">Editor's Pick</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/narwal-flow-2.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">40% OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/samsung-65-inch-qled.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">10% OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/govee-hydro-thermometer-sensor.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">Save $59</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/veise-ve017-fingerprint-smart-door-lock.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">30% OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/amazon-eero-6-mesh-wifi-system.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+          </div>
+          <div class="ticker-seg" aria-hidden="true">
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">$120 OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2025/03/blink-mini-2.jpg?q=49&amp;fit=crop&amp;w=180&amp;h=120&amp;dpr=2" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--orange">Editor's Pick</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/narwal-flow-2.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">40% OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/samsung-65-inch-qled.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">10% OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/govee-hydro-thermometer-sensor.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">Save $59</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/veise-ve017-fingerprint-smart-door-lock.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+            <div class="deal-card">
+              <span class="deal-badge deal-badge--green">30% OFF</span>
+              <img alt="" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/04/amazon-eero-6-mesh-wifi-system.jpg?w=180&amp;h=120&amp;fit=crop" width="115" height="82" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <p class="headline">Need new tech?</p>
+        <p class="sub">Don't overpay.</p>
+        <div class="cta-wrap">
+          <span class="cta">Explore the Deals Center →</span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <script>
+    var clickTag = 'https://www.howtogeek.com/deals/';
+    document.getElementById('click').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open(clickTag, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>
