@@ -147,7 +147,7 @@
             .stage--right .disc--photo {
                 animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 4.86s forwards;
             }
-       
+
             .disc--photo img {
                 display: block;
                 width: 100%;
@@ -344,22 +344,25 @@
     <body>
         <div id="ad-root" role="img" aria-label="How-To Geek Deals Center. Shop all deals.">
             <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open deal"></a>
-            <p class="sr-only">Mobile power bank. Twenty five percent off. MacBook Air. Save one hundred fifty dollars.</p>
-            <div class="pan-layer" aria-hidden="true">
-                <div class="stage stage--left">
+            <div class="pan-layer">
+                <p class="sr-only">Mobile power bank. Twenty five percent off. MacBook Air. Save one hundred fifty dollars.</p>
+                <div class="stage stage--left" aria-hidden="true">
                     <div class="disc disc--orange"></div>
                     <div class="disc disc--gray"></div>
                     <div class="disc disc--photo">
                         <img alt="" width="210" height="210" decoding="async" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/05/baseus-picogo-am52-magsafe-power-bank-edited.jpg?q=49&amp;fit=crop&amp;w=400&amp;dpr=2" />
                     </div>
                 </div>
-                <div class="stage stage--right">
+                <div class="pill-off pill-off--left" aria-hidden="true">25% OFF</div>
+                <p class="sr-only">Macbook Air. Save $150.</p>
+                <div class="stage stage--right" aria-hidden="true">
                     <div class="disc disc--orange"></div>
                     <div class="disc disc--gray"></div>
                     <div class="disc disc--photo">
                         <img alt="" width="210" height="210" decoding="async" src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2025/06/m4-macbook-air-getting-put-into-a-bag.jpg?q=49&amp;fit=crop&amp;w=380&amp;dpr=2" />
                     </div>
-                </div>
+                  </div>
+                  <div class="pill-off pill-off--right" aria-hidden="true">$SAVE 150</div>
                 <div class="hero-panel">
                     <div class="hero-panel-title">
                         <img class="hero-logo hero-rise hero-rise--1" src="../assets/htg-logo.svg" alt="" width="248" height="42" decoding="async" />
@@ -373,8 +376,6 @@
                         </svg>
                     </div>
                 </div>
-                <div class="pill-off pill-off--left">25% OFF</div>
-                <div class="pill-off pill-off--right">$SAVE 150</div>
             </div>
         </div>
         <script>
