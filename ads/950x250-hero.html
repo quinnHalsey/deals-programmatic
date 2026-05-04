@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="ad.size" content="width=950,height=250">
+  <meta name="viewport" content="width=950,height=250">
+  <title>How-To Geek — Deals hero 950×250 circle reveal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 950px;
+      height: 250px;
+      overflow: hidden;
+    }
+    #ad-root {
+      position: relative;
+      width: 950px;
+      height: 250px;
+      overflow: hidden;
+      background: #101010;
+      border: 1px solid #1a1f2e;
+    }
+    a.exit {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .stage {
+      width: 442px;
+      height: 442px;
+      position: absolute;
+      overflow: hidden;
+      z-index: 0;
+      top: -100px;
+      left: -7%;
+    }
+    /* Rings centered on left edge (x = 0); 10px stroke between rings */
+    .disc {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transform-origin: center center;
+      will-change: transform;
+    }
+    .disc--orange {
+      z-index: 1;
+      width: 442px;
+      height: 442px;
+      background: #f7941d;
+      animation: expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) forwards;
+    }
+    .disc--gray {
+      z-index: 2;
+      width: 422px;
+      height: 422px;
+      background: #d9d9d9;
+      animation: expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.14s forwards;
+    }
+    .disc--photo {
+      z-index: 3;
+      width: 402px;
+      height: 402px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      animation: expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.32s forwards;
+    }
+    .disc--photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    @keyframes expand {
+      from {
+        transform: translate(-50%, -50%) scale(0);
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    /*
+      Upper-right of visible ring stack (ad coords). Stage: left -7%, w 442;
+      disc center ≈ (154px, 121px); rim at ~y22 → pill straddles rim, mostly on dark bg.
+    */
+    .pill-off {
+      position: absolute;
+      left: 300px;
+      top: 48px;
+      z-index: 4;
+      transform: scale(0);
+      transform-origin: 38% 50%;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #166534;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: #fff;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      /* Photo ring ends ~1.24s; run in near tail of reveal */
+      animation: pill-bounce-in 0.52s ease-out 0.8s forwards;
+    }
+    @keyframes pill-bounce-in {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      12% {
+        opacity: 1;
+      }
+      68% {
+        transform: scale(1.08);
+      }
+      82% {
+        transform: scale(0.94);
+      }
+      94% {
+        transform: scale(1.02);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    /* Right column: logo → headline → sub → CTA; sync with ring expand (t=0) */
+    .hero-panel {
+      position: absolute;
+      z-index: 5;
+      left: 402px;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 20px 28px 22px 16px;
+      pointer-events: none;
+      text-align: center;
+    }
+    .hero-logo {
+      display: block;
+      width: min(220px, 86%);
+      height: auto;
+      max-height: 34px;
+      object-fit: contain;
+    }
+    .hero-title {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: clamp(22px, 3.4vw, 30px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.06em;
+      color: #f7941d;
+      text-transform: uppercase;
+    }
+    .hero-sub {
+      max-width: 280px;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: #fff;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+      padding: 11px 22px 11px 24px;
+      border-radius: 10px;
+      background: #f7941d;
+      box-shadow: 0 4px 18px rgba(247, 148, 29, 0.35);
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .hero-cta svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+    }
+    @keyframes hero-rise {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hero-rise {
+      opacity: 0;
+      animation: hero-rise 0.52s cubic-bezier(0.22, 1, 0.32, 1) forwards;
+    }
+    .hero-rise--1 { animation-delay: 0s; }
+    .hero-rise--2 { animation-delay: 0.16s; }
+    .hero-rise--3 { animation-delay: 0.32s; }
+    .hero-rise--4 { animation-delay: 0.48s; }
+    @media (prefers-reduced-motion: reduce) {
+      .disc {
+        animation: none !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+      }
+      .pill-off {
+        animation: none !important;
+        transform: scale(1) !important;
+        opacity: 1 !important;
+      }
+      .hero-rise {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="ad-root" role="img" aria-label="How-To Geek Deals Center. Shop all deals.">
+    <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open deal"></a>
+    <p class="sr-only">Mobile power bank. Fits in your pocker. 25% OFF</p>
+    <div class="stage" aria-hidden="true"> 
+      <div class="disc disc--orange"></div>
+      <div class="disc disc--gray"></div>
+      <div class="disc disc--photo">
+        <img
+          alt=""
+          width="210"
+          height="210"
+          decoding="async"
+          src="https://static0.howtogeekimages.com/wordpress/wp-content/uploads/2026/05/baseus-picogo-am52-magsafe-power-bank-edited.jpg?q=49&amp;fit=crop&amp;w=400&amp;dpr=2">
+      </div>
+    </div>
+    <div class="hero-panel" aria-hidden="true">
+      <img
+        class="hero-logo hero-rise hero-rise--1"
+        src="../assets/htg-logo.svg"
+        alt=""
+        width="248"
+        height="42"
+        decoding="async">
+      <p class="hero-title hero-rise hero-rise--2">Deals Center</p>
+      <p class="hero-sub hero-rise hero-rise--3">Deals worth your time. Curated by our editors.</p>
+      <div class="hero-cta hero-rise hero-rise--4">
+        <span>Shop All Deals</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="pill-off" aria-hidden="true">25% OFF</div>
+  </div>
+  <script>
+    var clickTag = 'https://www.howtogeek.com/deals/';
+    document.getElementById('click').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open(clickTag, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>
