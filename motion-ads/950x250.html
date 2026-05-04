@@ -383,6 +383,18 @@
                         0 0 0 5px rgba(192, 86, 32, 0.15);
                 }
             }
+            /* ── Light mode ── */
+            .hero-logo--light { display: none; }
+            body.light-mode,
+            body.light-mode #ad-root {
+                background: #f0f1f4;
+            }
+            body.light-mode .hero-sub {
+                color: #1a1f2e;
+            }
+            body.light-mode .hero-logo--dark { display: none; }
+            body.light-mode .hero-logo--light { display: block; }
+
             @media (prefers-reduced-motion: reduce) {
                 .pan-layer {
                     animation: none !important;
@@ -429,7 +441,8 @@
                   <div class="pill-off pill-off--right" aria-hidden="true">SAVE $150</div>
                 <div class="hero-panel">
                     <div class="hero-panel-title">
-                        <img class="hero-logo" src="../assets/htg-logo.svg" alt="How-To Geek" width="248" height="42" decoding="async" />
+                        <img class="hero-logo hero-logo--dark" src="../assets/htg-logo.svg" alt="How-To Geek" width="248" height="42" decoding="async" />
+                        <img class="hero-logo hero-logo--light" src="../assets/htg-logo-dark.svg" alt="How-To Geek" width="248" height="42" decoding="async" />
                         <p class="hero-title">Deals Center</p>
                     </div>
                     <p class="hero-sub">Deals worth your time. Curated by our editors.</p>
@@ -442,6 +455,9 @@
                 </div>
             </div>
         </div>
+        <script>
+            if (/[?&]light/.test(location.search)) document.body.classList.add('light-mode');
+        </script>
         <script>
             var clickTag = 'https://www.howtogeek.com/deals/';
             document.getElementById('click').addEventListener('click', function (e) {
