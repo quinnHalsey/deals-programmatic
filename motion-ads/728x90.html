@@ -143,7 +143,7 @@
                 object-position: bottom center;
                 transform: translateY(100px);
                 opacity: 0;
-                filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.55)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+                filter: drop-shadow(2px 1px 2px rgba(0, 0, 0, 0.75));
             }
             .product-img--mic {
                 transform: scaleX(-1), scaleY(-1), translateY(100px);
@@ -254,8 +254,9 @@
             #ad-root.looping .cta-btn svg {
                 animation: arrow-nudge 0.8s ease-in-out infinite;
             }
-            #ad-root.looping .products-2 .product-slot:nth-child(1) .product-img {
-                animation: product-float 3s ease-in-out infinite;
+            #ad-root.looping .products-2 .product-img.product-img--router {
+                opacity: 1 !important;
+                animation: product-float 3s ease-in-out infinite !important;
             }
             #ad-root:hover .cta-btn,
             #ad-root:focus-within .cta-btn {
@@ -330,7 +331,7 @@
             }
             @keyframes product-float {
                 0%, 100% { transform: translateY(0); }
-                50%       { transform: translateY(-5px); }
+                50%       { transform: translateY(-2px); }
             }
             @keyframes cta-shadow-pulse {
                 0%,
@@ -490,7 +491,7 @@
             @media (prefers-reduced-motion: reduce) {
                 #ad-root.looping .cta-btn,
                 #ad-root.looping .cta-btn svg,
-                #ad-root.looping .products-2 .product-slot:nth-child(1) .product-img {
+                #ad-root.looping .product-img--router {
                     animation: none !important;
                 }
                 .logo-img,
