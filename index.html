@@ -16,13 +16,39 @@
     h1 {
       font-size: 1.125rem;
       font-weight: 700;
-      margin: 0 0 24px;
-    }
-    p.note {
       margin: 0 0 20px;
+    }
+    /* Tab bar */
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      padding: 7px 16px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.08);
+      color: #4a5168;
+      font-family: inherit;
       font-size: 0.8125rem;
-      color: #5c6578;
-      max-width: 72ch;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .tab-btn:hover {
+      background: rgba(0,0,0,0.13);
+    }
+    .tab-btn.active {
+      background: #1a1f2e;
+      color: #fff;
+    }
+    /* Tab panels */
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
     }
     .row {
       display: flex;
@@ -86,31 +112,159 @@
 </head>
 <body>
   <h1>Deals Center Ads — preview</h1>
-  <div class="row">
-    <div class="units-row">
-      <div class="unit">
-        <h2>728 × 90 — motion</h2>
-        <iframe src="motion-ads/728x90.html" width="728" height="90" title="728x90 motion ad"></iframe>
+
+  <div class="tab-bar">
+    <button class="tab-btn" data-tab="tab-728x90">728 × 90</button>
+    <button class="tab-btn active" data-tab="tab-950x250">950 × 250</button>
+    <button class="tab-btn" data-tab="tab-320x50">320 × 50</button>
+    <button class="tab-btn" data-tab="tab-originals">Originals</button>
+  </div>
+
+  <div id="tab-728x90" class="tab-panel">
+    <div class="row">
+      <div class="units-row">
+        <div class="unit">
+          <h2>728 × 90 — motion</h2>
+          <iframe data-src="motion-ads/728x90.html" width="728" height="90" title="728x90 motion ad"></iframe>
+        </div>
       </div>
-    </div>
-    <div class="units-row">
-      <div class="unit">
-        <h2>728 × 90 — motion (light)</h2>
-        <iframe src="motion-ads/728x90.html?light" width="728" height="90" title="728x90 motion ad — light mode"></iframe>
-      </div>
-    </div>
-    <div class="units-row">
-      <div class="unit">
-        <h2>950 × 250 — motion</h2>
-        <iframe src="motion-ads/950x250.html" width="950" height="250" title="950x250 motion ad"></iframe>
-      </div>
-    </div>
-    <div class="units-row">
-      <div class="unit light-mode">
-        <h2>950 × 250 — motion (light)</h2>
-        <iframe src="motion-ads/950x250.html?light" width="950" height="250" title="950x250 motion ad — light mode"></iframe>
+      <div class="units-row">
+        <div class="unit">
+          <h2>728 × 90 — motion (light)</h2>
+          <iframe data-src="motion-ads/728x90.html?light" width="728" height="90" title="728x90 motion ad — light mode"></iframe>
+        </div>
       </div>
     </div>
   </div>
+
+  <div id="tab-950x250" class="tab-panel active">
+    <div class="row">
+      <div class="units-row">
+        <div class="unit">
+          <h2>950 × 250 — motion</h2>
+          <iframe data-src="motion-ads/950x250.html" width="950" height="250" title="950x250 motion ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit light-mode">
+          <h2>950 × 250 — motion (light)</h2>
+          <iframe data-src="motion-ads/950x250.html?light" width="950" height="250" title="950x250 motion ad — light mode"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-320x50" class="tab-panel">
+    <div class="row">
+      <div class="units-row">
+        <div class="unit">
+          <h2>320 × 50 — motion</h2>
+          <iframe data-src="motion-ads/320x50.html" width="320" height="50" title="320x50 motion ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit light-mode">
+          <h2>320 × 50 — motion (light)</h2>
+          <iframe data-src="motion-ads/320x50.html?light" width="320" height="50" title="320x50 motion ad — light mode"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-originals" class="tab-panel">
+    <div class="row">
+      <div class="units-row">
+        <div class="unit">
+          <h2>320 × 50</h2>
+          <iframe data-src="ads/320x50.html" width="320" height="50" title="320x50 ad"></iframe>
+        </div>
+        <div class="unit unit-dark">
+          <h2>320 × 50 - Light</h2>
+          <iframe data-src="ads/320x50-light.html" width="320" height="50" title="320x50 light ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit">
+          <h2>300 × 250</h2>
+          <iframe data-src="ads/300x250.html" width="300" height="250" title="300x250 ad"></iframe>
+        </div>
+        <div class="unit unit-dark">
+          <h2>300 × 250 - Light</h2>
+          <iframe data-src="ads/300x250xlight.html" width="300" height="250" title="300x250 light ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit">
+          <h2>300 × 250 (ticker)</h2>
+          <iframe data-srcdoc="ads/300x250xticker.html" width="300" height="250" title="300x250 newsletter ticker ad"></iframe>
+        </div>
+        <div class="unit unit-dark">
+          <h2>300 × 250 (ticker) - Light</h2>
+          <iframe data-srcdoc="ads/300x250xtickerxlight.html" width="300" height="250" title="300x250 newsletter ticker light ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit">
+          <h2>728 × 90</h2>
+          <iframe data-src="ads/728x90.html" width="728" height="90" title="728x90 ad"></iframe>
+        </div>
+        <div class="unit unit-dark">
+          <h2>728 × 90 - Light</h2>
+          <iframe data-src="ads/728x90xlight.html" width="728" height="90" title="728x90 light ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit">
+          <h2>970 × 250 — hero motion (categories)</h2>
+          <iframe data-src="ads/970x250-hero-motion.html" width="970" height="250" title="970x250 hero motion ad"></iframe>
+        </div>
+      </div>
+      <div class="units-row">
+        <div class="unit">
+          <h2>300 × 600</h2>
+          <iframe data-src="ads/300x600.html" width="300" height="600" title="300x600 ad"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function loadPanel(panel) {
+      panel.querySelectorAll('iframe[data-src]').forEach(function (f) {
+        f.src = f.dataset.src;
+      });
+      panel.querySelectorAll('iframe[data-srcdoc]').forEach(function (f) {
+        fetch(f.dataset.srcdoc)
+          .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.text(); })
+          .then(function (html) { f.removeAttribute('src'); f.srcdoc = html; })
+          .catch(function () {});
+      });
+    }
+
+    function unloadPanel(panel) {
+      panel.querySelectorAll('iframe').forEach(function (f) {
+        f.src = 'about:blank';
+        f.removeAttribute('srcdoc');
+      });
+    }
+
+    loadPanel(document.querySelector('.tab-panel.active'));
+
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var activePanel = document.querySelector('.tab-panel.active');
+        if (activePanel) {
+          unloadPanel(activePanel);
+          activePanel.classList.remove('active');
+        }
+        document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+
+        btn.classList.add('active');
+        var panel = document.getElementById(btn.dataset.tab);
+        panel.classList.add('active');
+        loadPanel(panel);
+      });
+    });
+  </script>
 </body>
 </html>
