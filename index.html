@@ -108,14 +108,28 @@
     .unit.light-mode h2 {
       color: #9aa0b0;
     }
+    .notes {
+      font-size: 1rem;
+      color: #4a5168;
+      line-height: 1.6;
+    }
+    .notes-heading {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.7rem;
+      color: #1a1f2e;
+      width: 100%;
+      border-bottom: 1px solid #d0d0d0;
+    }
   </style>
 </head>
 <body>
   <h1>Deals Center Ads — preview</h1>
 
   <div class="tab-bar">
-    <button class="tab-btn" data-tab="tab-728x90">728 × 90</button>
     <button class="tab-btn active" data-tab="tab-950x250">950 × 250</button>
+    <button class="tab-btn" data-tab="tab-728x90">728 × 90</button>
     <button class="tab-btn" data-tab="tab-320x50">320 × 50</button>
     <button class="tab-btn" data-tab="tab-originals">Originals</button>
   </div>
@@ -135,6 +149,10 @@
         </div>
       </div>
     </div>
+    <div class="notes">
+      <p class="notes-heading">Notes</p>
+      <p>Need to check with ads team about how long the ad can animate, if looping is allowed.</p>
+    </div>
   </div>
 
   <div id="tab-950x250" class="tab-panel active">
@@ -152,22 +170,25 @@
         </div>
       </div>
     </div>
+    <div class="notes">
+      <p class="notes-heading">Notes</p>
+      <p>Need to check with ads team about how long the ad can animate, if looping is allowed.</p>
+    </div>
   </div>
 
   <div id="tab-320x50" class="tab-panel">
     <div class="row">
       <div class="units-row">
-        <div class="unit">
+        <div class="unit light-mode">
           <h2>320 × 50 — motion</h2>
           <iframe data-src="motion-ads/320x50.html" width="320" height="50" title="320x50 motion ad"></iframe>
         </div>
       </div>
-      <div class="units-row">
-        <div class="unit light-mode">
-          <h2>320 × 50 — motion (light)</h2>
-          <iframe data-src="motion-ads/320x50.html?light" width="320" height="50" title="320x50 motion ad — light mode"></iframe>
-        </div>
-      </div>
+    </div>
+    <div class="notes">
+      <p class="notes-heading">Notes</p>
+      <p>Always light mode — better contrast with dark products.</p>
+      <p>This is a mobile ad, which is why it might feel small previewing on desktop.</p>
     </div>
   </div>
 
