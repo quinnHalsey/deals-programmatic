@@ -487,6 +487,29 @@
                 animation: none !important;
             }
 
+            /* ── Light mode ── */
+            .logo-img--light { display: none; }
+            body.light-mode .false-background {
+                background: #e2e4e8;
+            }
+            body.light-mode .tagline {
+                color: #1a1f2e;
+            }
+            body.light-mode .logo-img--dark { display: none; }
+            body.light-mode .logo-img--light { display: block; }
+            /* text-fill starts from dark instead of white */
+            @keyframes text-fill-orange-light {
+                from { color: #1a1f2e; }
+                to   { color: #f7941d; }
+            }
+            body.light-mode .phase-2 .tagline strong {
+                animation-name: text-fill-orange-light;
+            }
+            /* phase-4 strong is hard-coded #fff — override for light */
+            body.light-mode .phase-4 .tagline-wrap-2 .tagline strong {
+                color: #1a1f2e !important;
+            }
+
             /* ── Reduced motion ── */
             @media (prefers-reduced-motion: reduce) {
                 #ad-root.looping .cta-btn,
@@ -587,7 +610,8 @@
 
             <!-- Logo -->
             <div class="logo-section content-section">
-                <img class="logo-img" src="../assets/htg-logo.svg" alt="How-To Geek" width="144" height="24" decoding="async" />
+                <img class="logo-img logo-img--dark" src="../assets/htg-logo.svg" alt="How-To Geek" width="144" height="24" decoding="async" />
+                <img class="logo-img logo-img--light" src="../assets/htg-logo-dark.svg" alt="How-To Geek" width="144" height="24" decoding="async" />
                 <span class="logo-tagline">Deals Center</span>
             </div>
 
@@ -644,6 +668,9 @@
             </div>
         </div>
 
+        <script>
+            if (/[?&]light/.test(location.search)) document.body.classList.add('light-mode');
+        </script>
         <script>
             var clickTag = 'https://www.howtogeek.com/deals/';
             document.getElementById('click').addEventListener('click', function (e) {
