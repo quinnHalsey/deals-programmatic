@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="ad.size" content="width=300,height=600" />
+        <meta name="viewport" content="width=300,height=600" />
+        <title>XDA — Deals Center 300×600</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                width: 300px;
+                height: 600px;
+                overflow: hidden;
+            }
+            #ad-root {
+                position: relative;
+                width: 300px;
+                height: 600px;
+                overflow: hidden;
+                background: #202020;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            a.exit {
+                position: absolute;
+                inset: 0;
+                z-index: 10;
+                display: block;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            a.exit:focus-visible {
+                outline: 3px solid #a601c8;
+                outline-offset: -3px;
+            }
+
+            /* ── Radial glow behind products ── */
+            .glow {
+                position: absolute;
+                top: 95px;
+                left: 50%;
+                width: 340px;
+                height: 340px;
+                transform: translateX(-50%) scale(0);
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(247, 148, 29, 0.12) 0%, rgba(247, 148, 29, 0.04) 55%, transparent 75%);
+                animation: glow-expand 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+                pointer-events: none;
+            }
+
+            /* ── Header ── */
+            .header {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 28px;
+                gap: 6px;
+                flex: 0 0 auto;
+                z-index: 1;
+            }
+            .logo-img {
+                display: block;
+                width: 120px;
+                height: auto;
+                transform: translateY(-36px);
+                opacity: 0;
+                animation: slide-from-top 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+            }
+            .deals-label {
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.28em;
+                color: #a601c8;
+                text-transform: uppercase;
+                transform: translateY(-20px);
+                opacity: 0;
+                animation: slide-from-top 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards;
+            }
+            .divider {
+                width: 40px;
+                height: 2px;
+                background: rgba(166, 1, 200, 0.55);
+                border-radius: 2px;
+                margin-top: 4px;
+                transform: scaleX(0);
+                opacity: 0;
+                transform-origin: center;
+                animation: divider-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.52s forwards;
+            }
+
+            /* ── Product area ── */
+            .product-area {
+                flex: 1;
+                position: relative;
+                width: 100%;
+                min-height: 0;
+            }
+            .product-frame {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* ── Disc ring system ── */
+            .disc {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                border-radius: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transform-origin: center center;
+                will-change: transform;
+            }
+            .disc-orange {
+                width: 318px;
+                height: 318px;
+                background: #a601c8;
+                z-index: 1;
+            }
+            .disc-offwhite {
+                width: 296px;
+                height: 296px;
+                background: #f5f0e8;
+                z-index: 2;
+            }
+            .disc-photo {
+                width: 274px;
+                height: 274px;
+                overflow: hidden;
+                box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+                z-index: 3;
+            }
+            .disc-photo img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            /* align camera in center of images */ 
+            .product-frame-3 .disc-photo img {
+                object-position: 20%;
+            }
+       
+            /* ── Phase-1 disc entry (frame 1) ── */
+            .product-frame-1 .disc-orange {
+                animation: disc-expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 0.50s forwards;
+            }
+            .product-frame-1 .disc-offwhite {
+                animation: disc-expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.64s forwards;
+            }
+            .product-frame-1 .disc-photo {
+                animation: disc-expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.82s forwards;
+            }
+
+            /* ── Badges ── */
+            .badge {
+                position: absolute;
+                top: 26%;
+                left: 22px;
+                background: #166534;
+                color: #fff;
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+                padding: 5px 14px;
+                border-radius: 999px;
+                white-space: nowrap;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+                transform: scale(0);
+                opacity: 0;
+                transform-origin: center;
+                z-index: 4;
+            }
+            .product-frame-1 .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.70s forwards;
+            }
+            .product-frame-2 .badge,
+            .product-frame-3 .badge {
+                animation: none;
+            }
+            .product-frame-2 .badge {
+                top: auto;
+                left: auto;
+                bottom: 15%;
+                right: 22px;
+            }
+            .product-frame-3 .badge {
+                top: auto;
+                bottom: 15%;
+            }
+
+            /* ── Tagline area ── */
+            .tagline-area {
+                position: relative;
+                width: 100%;
+                height: 76px;
+                flex: 0 0 76px;
+                overflow: hidden;
+            }
+            .tagline-wrap,
+            .tagline-wrap-2,
+            .tagline-wrap-3 {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 28px;
+                pointer-events: none;
+            }
+            .tagline {
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 17px;
+                font-weight: 400;
+                color: #fff;
+                line-height: 1.4;
+                text-align: center;
+            }
+            .tagline strong {
+                font-weight: 700;
+            }
+
+            .tagline-wrap {
+                transform: translateY(22px);
+                opacity: 0;
+                animation: slide-from-bottom-text 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.6s forwards;
+            }
+            .tagline-wrap .tagline strong {
+                animation: text-fill-orange 0.5s ease-out 2.35s both;
+            }
+            .tagline-wrap-2,
+            .tagline-wrap-3 {
+                transform: translateY(22px);
+                opacity: 0;
+            }
+
+            /* ── CTA ── */
+            .cta-wrap {
+                flex: 0 0 auto;
+                padding: 10px 28px 26px;
+                z-index: 1;
+                width: 100%;
+            }
+            .cta-btn {
+                width: 100%;
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 4px;
+                background: linear-gradient(135deg, #a601c8, #7800a0);
+                box-shadow: 0 4px 20px rgba(166, 1, 200, 0.4);
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 15px;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                color: #fff;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .cta-btn::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 4px;
+                background: linear-gradient(135deg, #7800a0 0%, #c41d6b 100%);
+                opacity: 0;
+                transition: opacity 0.25s ease;
+                pointer-events: none;
+            }
+            .cta-btn svg {
+                position: relative;
+                flex-shrink: 0;
+                width: 16px;
+                height: 16px;
+                transition: transform 0.25s ease;
+            }
+            .cta-btn span {
+                position: relative;
+            }
+            #ad-root:hover .cta-btn::before,
+            #ad-root:focus-within .cta-btn::before {
+                opacity: 1;
+            }
+            #ad-root.looping .cta-btn {
+                animation: cta-shadow-pulse 1.1s ease-in-out infinite;
+            }
+            #ad-root.looping .cta-btn svg {
+                animation: arrow-nudge 0.8s ease-in-out infinite;
+            }
+            #ad-root:hover .cta-btn,
+            #ad-root:focus-within .cta-btn {
+                animation: cta-shadow-pulse 1.1s ease-in-out infinite;
+            }
+            #ad-root:hover .cta-btn svg,
+            #ad-root:focus-within .cta-btn svg {
+                animation: arrow-nudge 0.8s ease-in-out infinite;
+            }
+
+            /* ── Keyframes ── */
+            @keyframes slide-from-top {
+                from { transform: translateY(-36px); opacity: 0; }
+                to   { transform: translateY(0);     opacity: 1; }
+            }
+            @keyframes divider-in {
+                from { transform: scaleX(0); opacity: 0; }
+                to   { transform: scaleX(1); opacity: 1; }
+            }
+            @keyframes glow-expand {
+                from { transform: translateX(-50%) scale(0); opacity: 0; }
+                to   { transform: translateX(-50%) scale(1); opacity: 1; }
+            }
+            @keyframes disc-expand {
+                from { transform: translate(-50%, -50%) scale(0); }
+                to   { transform: translate(-50%, -50%) scale(1); }
+            }
+            @keyframes disc-shrink {
+                from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                to   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            }
+            @keyframes slide-from-bottom-text {
+                from { transform: translateY(22px); opacity: 0; }
+                to   { transform: translateY(0);    opacity: 1; }
+            }
+            @keyframes slide-to-top-text {
+                from { transform: translateY(0);     opacity: 1; }
+                to   { transform: translateY(-22px); opacity: 0; }
+            }
+            @keyframes pill-bounce-in {
+                0%   { transform: scale(0);    opacity: 0; }
+                12%  { opacity: 1; }
+                68%  { transform: scale(1.14); }
+                82%  { transform: scale(0.93); }
+                94%  { transform: scale(1.04); }
+                100% { transform: scale(1);    opacity: 1; }
+            }
+            @keyframes pill-shrink-out {
+                from { transform: scale(1); opacity: 1; }
+                to   { transform: scale(0); opacity: 0; }
+            }
+            @keyframes text-fill-orange {
+                from { color: #fff; }
+                to   { color: #a601c8; }
+            }
+            @keyframes arrow-nudge {
+                0%, 100% { transform: translateX(0); }
+                50%       { transform: translateX(4px); }
+            }
+            @keyframes cta-shadow-pulse {
+                0%, 100% {
+                    box-shadow: 0 4px 20px rgba(166, 1, 200, 0.45), 0 0 0 0px rgba(166, 1, 200, 0);
+                }
+                50% {
+                    box-shadow: 0 6px 32px rgba(166, 1, 200, 0.75), 0 0 0 5px rgba(166, 1, 200, 0.15);
+                }
+            }
+
+            /* ── Phase 2: headset → router ── */
+            .phase-2 .product-frame-1 .badge {
+                animation: pill-shrink-out 0.28s ease-in 0s both;
+            }
+            .phase-2 .product-frame-1 .disc-orange,
+            .phase-2 .product-frame-1 .disc-offwhite,
+            .phase-2 .product-frame-1 .disc-photo {
+                animation: disc-shrink 0.45s cubic-bezier(0.4, 0, 1, 1) 0.05s both;
+            }
+            .phase-2 .product-frame-2 .disc-orange {
+                animation: disc-expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 0.52s both !important;
+            }
+            .phase-2 .product-frame-2 .disc-offwhite {
+                animation: disc-expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.66s both !important;
+            }
+            .phase-2 .product-frame-2 .disc-photo {
+                animation: disc-expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.84s both !important;
+            }
+            .phase-2 .product-frame-2 .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.72s both !important;
+            }
+            .phase-2 .tagline-wrap {
+                animation: slide-to-top-text 0.38s cubic-bezier(0.4, 0, 1, 1) 0s both;
+            }
+            .phase-2 .tagline-wrap-2 {
+                animation: slide-from-bottom-text 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+            }
+            .phase-2 .tagline-wrap-2 .tagline strong {
+                animation: text-fill-orange 0.5s ease-out 1.48s both;
+            }
+
+            /* ── Phase 3: router → camera + CTA in ── */
+            .phase-3 .product-frame-2 .badge {
+                animation: pill-shrink-out 0.28s ease-in 0s both !important;
+            }
+            .phase-3 .product-frame-2 .disc-orange,
+            .phase-3 .product-frame-2 .disc-offwhite,
+            .phase-3 .product-frame-2 .disc-photo {
+                animation: disc-shrink 0.45s cubic-bezier(0.4, 0, 1, 1) 0.05s both !important;
+            }
+            .phase-3 .product-frame-3 .disc-orange {
+                animation: disc-expand 0.9s cubic-bezier(0.22, 1, 0.32, 1) 0.52s both !important;
+            }
+            .phase-3 .product-frame-3 .disc-offwhite {
+                animation: disc-expand 0.88s cubic-bezier(0.22, 1, 0.32, 1) 0.66s both !important;
+            }
+            .phase-3 .product-frame-3 .disc-photo {
+                animation: disc-expand 0.92s cubic-bezier(0.22, 1, 0.32, 1) 0.84s both !important;
+            }
+            .phase-3 .product-frame-3 .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.72s both !important;
+            }
+            .phase-3 .tagline-wrap-2 {
+                animation: slide-to-top-text 0.38s cubic-bezier(0.4, 0, 1, 1) 0s both !important;
+            }
+            .phase-3 .tagline-wrap-3 {
+                animation: slide-from-bottom-text 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+            }
+            .phase-3 .cta-wrap {
+                pointer-events: auto;
+            }
+
+            /* ── Light mode ── */
+            body.light-mode #ad-root {
+                background: #e2e4e8;
+            }
+            body.light-mode .tagline {
+                color: #1a1f2e;
+            }
+            @keyframes text-fill-orange-light {
+                from { color: #1a1f2e; }
+                to   { color: #a601c8; }
+            }
+            body.light-mode .tagline-wrap .tagline strong {
+                animation-name: text-fill-orange-light;
+            }
+            body.light-mode .phase-2 .tagline-wrap-2 .tagline strong {
+                animation-name: text-fill-orange-light;
+            }
+            .logo-light-bg { display: none; }
+            body.light-mode .logo-dark-bg  { display: none; }
+            body.light-mode .logo-light-bg { display: inline; }
+
+            /* ── Reduced motion ── */
+            @media (prefers-reduced-motion: reduce) {
+                .logo-img,
+                .deals-label,
+                .divider {
+                    animation: none !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+                .glow {
+                    animation: none !important;
+                    transform: translateX(-50%) scale(1) !important;
+                    opacity: 1 !important;
+                }
+                .disc {
+                    animation: none !important;
+                    transform: translate(-50%, -50%) scale(0) !important;
+                    opacity: 0 !important;
+                }
+                .product-frame-1 .disc {
+                    transform: translate(-50%, -50%) scale(1) !important;
+                    opacity: 1 !important;
+                }
+                .badge {
+                    animation: none !important;
+                    transform: scale(1) !important;
+                    opacity: 1 !important;
+                }
+                .product-frame-2 .badge,
+                .product-frame-3 .badge {
+                    opacity: 0 !important;
+                }
+                .tagline-wrap {
+                    animation: none !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+                .tagline-wrap .tagline strong {
+                    animation: none !important;
+                    color: #a601c8 !important;
+                }
+                .tagline-wrap-2,
+                .tagline-wrap-3 {
+                    opacity: 0 !important;
+                }
+                .cta-wrap {
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+                /* phase 2 */
+                .phase-2 .product-frame-1 .disc { transform: translate(-50%,-50%) scale(0) !important; opacity: 0 !important; }
+                .phase-2 .product-frame-1 .badge { opacity: 0 !important; }
+                .phase-2 .product-frame-2 .disc { transform: translate(-50%,-50%) scale(1) !important; opacity: 1 !important; }
+                .phase-2 .product-frame-2 .badge { opacity: 1 !important; }
+                .phase-2 .tagline-wrap  { animation: none !important; opacity: 0 !important; }
+                .phase-2 .tagline-wrap-2 {
+                    animation: none !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+                .phase-2 .tagline-wrap-2 .tagline strong {
+                    animation: none !important;
+                    color: #a601c8 !important;
+                }
+                /* phase 3 */
+                .phase-3 .product-frame-2 .disc { transform: translate(-50%,-50%) scale(0) !important; opacity: 0 !important; }
+                .phase-3 .product-frame-2 .badge { opacity: 0 !important; }
+                .phase-3 .product-frame-3 .disc { transform: translate(-50%,-50%) scale(1) !important; opacity: 1 !important; }
+                .phase-3 .product-frame-3 .badge { opacity: 1 !important; }
+                .phase-3 .tagline-wrap-2 { animation: none !important; opacity: 0 !important; }
+                .phase-3 .tagline-wrap-3 {
+                    animation: none !important;
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+                .phase-3 .cta-wrap {
+                    transform: none !important;
+                    opacity: 1 !important;
+                }
+                #ad-root.looping .cta-btn,
+                #ad-root.looping .cta-btn svg {
+                    animation: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ad-root" role="region" aria-label="Advertisement: XDA Deals Center">
+            <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer" aria-label="Shop XDA Deals — opens in new tab"></a>
+
+            <!-- Glow halo behind products -->
+            <div class="glow" aria-hidden="true"></div>
+
+            <!-- Header -->
+            <div class="header">
+                <img class="logo-img logo-dark-bg"  src="../assets/xda-logo-full-colored-light.svg"      alt="XDA" width="152" height="45" decoding="async" />
+                <img class="logo-img logo-light-bg" src="../assets/xda-logo-full-colored-light_dark.svg" alt="XDA" width="152" height="45" decoding="async" />
+                <span class="deals-label">Deals Center</span>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Products -->
+            <div class="product-area">
+                <div class="product-frame product-frame-1">
+                    <div class="disc disc-orange" aria-hidden="true"></div>
+                    <div class="disc disc-offwhite" aria-hidden="true"></div>
+                    <div class="disc disc-photo">
+                        <img src="../assets/terramaster-F2-425-plus_square_edited.jpg" alt="" decoding="async" />
+                    </div>
+                    <div class="badge">Save $75</div>
+                </div>
+                <div class="product-frame product-frame-2">
+                    <div class="disc disc-orange" aria-hidden="true"></div>
+                    <div class="disc disc-offwhite" aria-hidden="true"></div>
+                    <div class="disc disc-photo">
+                        <img src="../assets/tp-link-axe5400-tri-band-wi-fi-6e-router.png" alt="" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="badge">-35%</div>
+                </div>
+                <div class="product-frame product-frame-3">
+                    <div class="disc disc-orange" aria-hidden="true"></div>
+                    <div class="disc disc-offwhite" aria-hidden="true"></div>
+                    <div class="disc disc-photo">
+                        <img src="../assets/sony-zv-1f-vlog-camera-edited.avif" alt="" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="badge">-$152</div>
+                </div>
+            </div>
+
+            <!-- Taglines -->
+            <div class="tagline-area">
+                <div class="tagline-wrap" aria-hidden="true">
+                    <p class="tagline">Your files. Your server. <strong>Save $75.</strong></p>
+                </div>
+                <div class="tagline-wrap-2" aria-hidden="true">
+                    <p class="tagline">Faster Wi-Fi, <strong>35% off.</strong></p>
+                </div>
+                <div class="tagline-wrap-3" aria-hidden="true">
+                    <p class="tagline"><strong>Don't pay full price</strong> for tech.</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-wrap">
+                <div class="cta-btn">
+                    <span>Explore All Deals</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            if (/[?&]light/.test(location.search)) document.body.classList.add('light-mode');
+        </script>
+        <script>
+            var clickTag = 'https://www.xda-developers.com/deals/';
+            document.getElementById('click').addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open(clickTag, '_blank', 'noopener,noreferrer');
+            });
+
+            // phase-2: headset ↓ → router reveals | tagline 1 ↑ + tagline 2 in
+            setTimeout(function () {
+                document.getElementById('ad-root').classList.add('phase-2');
+            }, 3200);
+
+            // phase-3: router ↓ → camera reveals | tagline 2 ↑ + tagline 3 + CTA in
+            setTimeout(function () {
+                document.getElementById('ad-root').classList.add('phase-3');
+            }, 6400);
+
+            // looping: CTA pulses
+            setTimeout(function () {
+                document.getElementById('ad-root').classList.add('looping');
+            }, 9200);
+        </script>
+    </body>
+</html>

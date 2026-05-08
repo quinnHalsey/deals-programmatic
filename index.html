@@ -160,6 +160,55 @@
                 width: 100%;
                 border-bottom: 1px solid #d0d0d0;
             }
+            /* Brand sub-tabs */
+            .brand-tab-bar {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+            .brand-btn {
+                padding: 7px 14px;
+                border: 2px solid transparent;
+                border-radius: 10px;
+                background: #1a1f2e;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0.35;
+                transition:
+                    opacity 0.15s,
+                    border-color 0.15s,
+                    box-shadow 0.15s,
+                    transform 0.1s;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+                user-select: none;
+            }
+            .brand-btn:hover {
+                opacity: 0.65;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+            }
+            .brand-btn:active {
+                transform: translateY(0);
+            }
+            .brand-btn.active {
+                opacity: 1;
+                border-color: rgba(255, 255, 255, 0.28);
+                box-shadow: 0 4px 14px rgba(26, 31, 46, 0.4);
+            }
+            .brand-btn img {
+                height: 20px;
+                width: auto;
+                display: block;
+            }
+            /* Brand panels */
+            .brand-panel {
+                display: none;
+            }
+            .brand-panel.active {
+                display: block;
+            }
         </style>
     </head>
     <body>
@@ -174,34 +223,78 @@
         </div>
 
         <div id="tab-728x90" class="tab-panel">
-            <div class="row">
-                <div class="units-row">
-                    <div class="unit">
-                        <h2>728 × 90 — motion</h2>
-                        <iframe data-src="motion-ads/728x90.html" width="728" height="90" title="728x90 motion ad"></iframe>
+            <div class="brand-tab-bar">
+                <button class="brand-btn active" data-brand="htg"><img src="assets/htg-logo.svg" alt="How-To Geek" height="20"></button>
+                <button class="brand-btn" data-brand="xda"><img src="assets/xda-logo-full-colored-light.svg" alt="XDA" height="20"></button>
+            </div>
+            <div class="brand-panel active" data-brand="htg">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>728 × 90 — motion</h2>
+                            <iframe data-src="motion-ads/728x90.html" width="728" height="90" title="728x90 motion ad"></iframe>
+                        </div>
+                    </div>
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>728 × 90 — motion (light)</h2>
+                            <iframe data-src="motion-ads/728x90.html?light" width="728" height="90" title="728x90 motion ad — light mode"></iframe>
+                        </div>
                     </div>
                 </div>
-                <div class="units-row">
-                    <div class="unit">
-                        <h2>728 × 90 — motion (light)</h2>
-                        <iframe data-src="motion-ads/728x90.html?light" width="728" height="90" title="728x90 motion ad — light mode"></iframe>
+            </div>
+            <div class="brand-panel" data-brand="xda">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>728 × 90 — motion</h2>
+                            <iframe data-src="motion-ads_xda/728x90.html" width="728" height="90" title="728x90 XDA motion ad"></iframe>
+                        </div>
+                    </div>
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>728 × 90 — motion (light)</h2>
+                            <iframe data-src="motion-ads_xda/728x90.html?light" width="728" height="90" title="728x90 XDA motion ad — light mode"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="tab-970x250" class="tab-panel active">
-            <div class="row">
-                <div class="units-row">
-                    <div class="unit">
-                        <h2>970 × 250 — motion</h2>
-                        <iframe data-src="motion-ads/970x250.html" width="970" height="250" title="970x250 motion ad"></iframe>
+            <div class="brand-tab-bar">
+                <button class="brand-btn active" data-brand="htg"><img src="assets/htg-logo.svg" alt="How-To Geek" height="20"></button>
+                <button class="brand-btn" data-brand="xda"><img src="assets/xda-logo-full-colored-light.svg" alt="XDA" height="20"></button>
+            </div>
+            <div class="brand-panel active" data-brand="htg">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>970 × 250 — motion</h2>
+                            <iframe data-src="motion-ads/970x250.html" width="970" height="250" title="970x250 motion ad"></iframe>
+                        </div>
+                    </div>
+                    <div class="units-row">
+                        <div class="unit light-mode">
+                            <h2>970 × 250 — motion (light)</h2>
+                            <iframe data-src="motion-ads/970x250.html?light" width="970" height="250" title="970x250 motion ad — light mode"></iframe>
+                        </div>
                     </div>
                 </div>
-                <div class="units-row">
-                    <div class="unit light-mode">
-                        <h2>970 × 250 — motion (light)</h2>
-                        <iframe data-src="motion-ads/970x250.html?light" width="970" height="250" title="970x250 motion ad — light mode"></iframe>
+            </div>
+            <div class="brand-panel" data-brand="xda">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>970 × 250 — motion</h2>
+                            <iframe data-src="motion-ads_xda/970x250.html" width="970" height="250" title="970x250 XDA motion ad"></iframe>
+                        </div>
+                    </div>
+                    <div class="units-row">
+                        <div class="unit light-mode">
+                            <h2>970 × 250 — motion (light)</h2>
+                            <iframe data-src="motion-ads_xda/970x250.html?light" width="970" height="250" title="970x250 XDA motion ad — light mode"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,11 +305,27 @@
         </div>
 
         <div id="tab-320x50" class="tab-panel">
-            <div class="row">
-                <div class="units-row">
-                    <div class="unit light-mode">
-                        <h2>320 × 50 — motion</h2>
-                        <iframe data-src="motion-ads/320x50.html" width="320" height="50" title="320x50 motion ad"></iframe>
+            <div class="brand-tab-bar">
+                <button class="brand-btn active" data-brand="htg"><img src="assets/htg-logo.svg" alt="How-To Geek" height="20"></button>
+                <button class="brand-btn" data-brand="xda"><img src="assets/xda-logo-full-colored-light.svg" alt="XDA" height="20"></button>
+            </div>
+            <div class="brand-panel active" data-brand="htg">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit light-mode">
+                            <h2>320 × 50 — motion</h2>
+                            <iframe data-src="motion-ads/320x50.html" width="320" height="50" title="320x50 motion ad"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-panel" data-brand="xda">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit light-mode">
+                            <h2>320 × 50 — motion</h2>
+                            <iframe data-src="motion-ads_xda/320x50.html" width="320" height="50" title="320x50 XDA motion ad"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -228,15 +337,35 @@
         </div>
 
         <div id="tab-300x250" class="tab-panel">
-            <div class="row">
-                <div class="units-row">
-                    <div class="unit">
-                        <h2>300 × 250 — motion</h2>
-                        <iframe data-src="motion-ads/300x250.html" width="300" height="250" title="300x250 motion ad"></iframe>
+            <div class="brand-tab-bar">
+                <button class="brand-btn active" data-brand="htg"><img src="assets/htg-logo.svg" alt="How-To Geek" height="20"></button>
+                <button class="brand-btn" data-brand="xda"><img src="assets/xda-logo-full-colored-light.svg" alt="XDA" height="20"></button>
+            </div>
+            <div class="brand-panel active" data-brand="htg">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>300 × 250 — motion</h2>
+                            <iframe data-src="motion-ads/300x250.html" width="300" height="250" title="300x250 motion ad"></iframe>
+                        </div>
+                        <div class="unit light-mode">
+                            <h2>300 × 250 — motion (light)</h2>
+                            <iframe data-src="motion-ads/300x250.html?light" width="300" height="250" title="300x250 motion ad — light mode"></iframe>
+                        </div>
                     </div>
-                    <div class="unit light-mode">
-                        <h2>300 × 250 — motion (light)</h2>
-                        <iframe data-src="motion-ads/300x250.html?light" width="300" height="250" title="300x250 motion ad — light mode"></iframe>
+                </div>
+            </div>
+            <div class="brand-panel" data-brand="xda">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>300 × 250 — motion</h2>
+                            <iframe data-src="motion-ads_xda/300x250.html" width="300" height="250" title="300x250 XDA motion ad"></iframe>
+                        </div>
+                        <div class="unit light-mode">
+                            <h2>300 × 250 — motion (light)</h2>
+                            <iframe data-src="motion-ads_xda/300x250.html?light" width="300" height="250" title="300x250 XDA motion ad — light mode"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,15 +376,35 @@
         </div>
 
         <div id="tab-300x600" class="tab-panel">
-            <div class="row">
-                <div class="units-row">
-                    <div class="unit">
-                        <h2>300 × 600 — motion</h2>
-                        <iframe data-src="motion-ads/300x600.html" width="300" height="600" title="300x600 motion ad"></iframe>
+            <div class="brand-tab-bar">
+                <button class="brand-btn active" data-brand="htg"><img src="assets/htg-logo.svg" alt="How-To Geek" height="20"></button>
+                <button class="brand-btn" data-brand="xda"><img src="assets/xda-logo-full-colored-light.svg" alt="XDA" height="20"></button>
+            </div>
+            <div class="brand-panel active" data-brand="htg">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>300 × 600 — motion</h2>
+                            <iframe data-src="motion-ads/300x600.html" width="300" height="600" title="300x600 motion ad"></iframe>
+                        </div>
+                        <div class="unit light-mode">
+                            <h2>300 × 600 — motion (light)</h2>
+                            <iframe data-src="motion-ads/300x600.html?light" width="300" height="600" title="300x600 motion ad — light mode"></iframe>
+                        </div>
                     </div>
-                    <div class="unit light-mode">
-                        <h2>300 × 600 — motion (light)</h2>
-                        <iframe data-src="motion-ads/300x600.html?light" width="300" height="600" title="300x600 motion ad — light mode"></iframe>
+                </div>
+            </div>
+            <div class="brand-panel" data-brand="xda">
+                <div class="row">
+                    <div class="units-row">
+                        <div class="unit">
+                            <h2>300 × 600 — motion</h2>
+                            <iframe data-src="motion-ads_xda/300x600.html" width="300" height="600" title="300x600 XDA motion ad"></iframe>
+                        </div>
+                        <div class="unit light-mode">
+                            <h2>300 × 600 — motion (light)</h2>
+                            <iframe data-src="motion-ads_xda/300x600.html?light" width="300" height="600" title="300x600 XDA motion ad — light mode"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -264,13 +413,12 @@
                 <p>Half-page unit. Circle-reveal animation on each product swap.</p>
             </div>
         </div>
-        '
         <script>
-            function loadPanel(panel) {
-                panel.querySelectorAll('iframe[data-src]').forEach(function (f) {
+            function loadIframes(container) {
+                container.querySelectorAll('iframe[data-src]').forEach(function (f) {
                     f.src = f.dataset.src;
                 });
-                panel.querySelectorAll('iframe[data-srcdoc]').forEach(function (f) {
+                container.querySelectorAll('iframe[data-srcdoc]').forEach(function (f) {
                     fetch(f.dataset.srcdoc)
                         .then(function (r) {
                             if (!r.ok) throw new Error('bad status');
@@ -284,11 +432,20 @@
                 });
             }
 
-            function unloadPanel(panel) {
-                panel.querySelectorAll('iframe').forEach(function (f) {
+            function unloadIframes(container) {
+                container.querySelectorAll('iframe').forEach(function (f) {
                     f.src = 'about:blank';
                     f.removeAttribute('srcdoc');
                 });
+            }
+
+            function loadPanel(panel) {
+                var activeBrand = panel.querySelector('.brand-panel.active');
+                loadIframes(activeBrand || panel);
+            }
+
+            function unloadPanel(panel) {
+                unloadIframes(panel);
             }
 
             loadPanel(document.querySelector('.tab-panel.active'));
@@ -308,6 +465,25 @@
                     var panel = document.getElementById(btn.dataset.tab);
                     panel.classList.add('active');
                     loadPanel(panel);
+                });
+            });
+
+            document.querySelectorAll('.brand-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var sizePanel = btn.closest('.tab-panel');
+                    var activeBrand = sizePanel.querySelector('.brand-panel.active');
+                    if (activeBrand) {
+                        unloadIframes(activeBrand);
+                        activeBrand.classList.remove('active');
+                    }
+                    sizePanel.querySelectorAll('.brand-btn').forEach(function (b) {
+                        b.classList.remove('active');
+                    });
+
+                    btn.classList.add('active');
+                    var newBrand = sizePanel.querySelector('.brand-panel[data-brand="' + btn.dataset.brand + '"]');
+                    newBrand.classList.add('active');
+                    loadIframes(newBrand);
                 });
             });
         </script>
