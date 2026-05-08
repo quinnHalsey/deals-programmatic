@@ -1,274 +1,315 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Deals Center ads — preview</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 24px 20px 40px;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: #e8eaef;
-      color: #1a1f2e;
-    }
-    h1 {
-      font-size: 1.125rem;
-      font-weight: 700;
-      margin: 0 0 20px;
-    }
-    /* Tab bar */
-    .tab-bar {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 10px 20px;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      background: #fff;
-      color: #4a5168;
-      font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
-      letter-spacing: 0.01em;
-      user-select: none;
-    }
-    .tab-btn:hover {
-      background: #f0f2f7;
-      border-color: #b0b8cc;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      transform: translateY(-1px);
-    }
-    .tab-btn:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.10);
-    }
-    .tab-btn.active {
-      background: #1a1f2e;
-      color: #fff;
-      border-color: #1a1f2e;
-      box-shadow: 0 4px 14px rgba(26,31,46,0.35);
-    }
-    .tab-btn .tab-size {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 500;
-      opacity: 0.65;
-      margin-top: 2px;
-      letter-spacing: 0.03em;
-    }
-    .tab-btn.active .tab-size {
-      opacity: 0.75;
-    }
-    /* Tab panels */
-    .tab-panel {
-      display: none;
-    }
-    .tab-panel.active {
-      display: block;
-    }
-    .row {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-items: flex-start;
-      gap: 20px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      -webkit-overflow-scrolling: touch;
-    }
-    .unit {
-      flex: 0 0 auto;
-      background: #fff;
-      color: #6b7588;
-      border-radius: 10px;
-      padding: 12px 12px 14px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
-    .unit-dark {
-        color: white;
-        background: #101010;
-    }
-    .unit h2 {
-      margin: 0 0 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .unit iframe {
-      display: block;
-      border: 0;
-      vertical-align: top;
-    }
-    .units-row {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .ad-dark-frame {
-      background: #12151c;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-    }
-    .ad-dark-frame iframe {
-      display: block;
-      border: 0;
-      vertical-align: top;
-    }
-    .unit.light-mode {
-      color: #9aa0b0;
-    }
-    .unit.light-mode h2 {
-      color: #9aa0b0;
-    }
-    .notes {
-      font-size: 1rem;
-      color: #4a5168;
-      line-height: 1.6;
-    }
-    .notes-heading {
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-size: 0.7rem;
-      color: #1a1f2e;
-      width: 100%;
-      border-bottom: 1px solid #d0d0d0;
-    }
-  </style>
-</head>
-<body>
-  <h1>Deals Center Ads — preview</h1>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Deals Center ads — preview</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                padding: 24px 20px 40px;
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    'Segoe UI',
+                    Roboto,
+                    sans-serif;
+                background: #e8eaef;
+                color: #1a1f2e;
+            }
+            h1 {
+                font-size: 1.125rem;
+                font-weight: 700;
+                margin: 0 0 20px;
+            }
+            /* Tab bar */
+            .tab-bar {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 24px;
+                flex-wrap: wrap;
+            }
+            .tab-btn {
+                padding: 10px 20px;
+                border: 2px solid transparent;
+                border-radius: 10px;
+                background: #fff;
+                color: #4a5168;
+                font-family: inherit;
+                font-size: 0.875rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition:
+                    background 0.15s,
+                    color 0.15s,
+                    border-color 0.15s,
+                    box-shadow 0.15s,
+                    transform 0.1s;
+                box-shadow:
+                    0 2px 6px rgba(0, 0, 0, 0.1),
+                    0 1px 2px rgba(0, 0, 0, 0.06);
+                letter-spacing: 0.01em;
+                user-select: none;
+            }
+            .tab-btn:hover {
+                background: #f0f2f7;
+                border-color: #b0b8cc;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+                transform: translateY(-1px);
+            }
+            .tab-btn:active {
+                transform: translateY(0);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+            .tab-btn.active {
+                background: #1a1f2e;
+                color: #fff;
+                border-color: #1a1f2e;
+                box-shadow: 0 4px 14px rgba(26, 31, 46, 0.35);
+            }
+            .tab-btn .tab-size {
+                display: block;
+                font-size: 0.7rem;
+                font-weight: 500;
+                opacity: 0.65;
+                margin-top: 2px;
+                letter-spacing: 0.03em;
+            }
+            .tab-btn.active .tab-size {
+                opacity: 0.75;
+            }
+            /* Tab panels */
+            .tab-panel {
+                display: none;
+            }
+            .tab-panel.active {
+                display: block;
+            }
+            .row {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-items: flex-start;
+                gap: 20px;
+                overflow-x: auto;
+                padding-bottom: 12px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .unit {
+                flex: 0 0 auto;
+                background: #fff;
+                color: #6b7588;
+                border-radius: 10px;
+                padding: 12px 12px 14px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            }
+            .unit-dark {
+                color: white;
+                background: #101010;
+            }
+            .unit h2 {
+                margin: 0 0 10px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+            .unit iframe {
+                display: block;
+                border: 0;
+                vertical-align: top;
+            }
+            .units-row {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .ad-dark-frame {
+                background: #12151c;
+                padding: 10px;
+                border-radius: 8px;
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+            }
+            .ad-dark-frame iframe {
+                display: block;
+                border: 0;
+                vertical-align: top;
+            }
+            .unit.light-mode {
+                color: #9aa0b0;
+            }
+            .unit.light-mode h2 {
+                color: #9aa0b0;
+            }
+            .notes {
+                font-size: 1rem;
+                color: #4a5168;
+                line-height: 1.6;
+            }
+            .notes-heading {
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                font-size: 0.7rem;
+                color: #1a1f2e;
+                width: 100%;
+                border-bottom: 1px solid #d0d0d0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Deals Center Ads — preview</h1>
 
-  <div class="tab-bar">
-    <button class="tab-btn active" data-tab="tab-970x250">970 × 250<span class="tab-size">Billboard</span></button>
-    <button class="tab-btn" data-tab="tab-728x90">728 × 90<span class="tab-size">Leaderboard</span></button>
-    <button class="tab-btn" data-tab="tab-320x50">320 × 50<span class="tab-size">Mobile Banner</span></button>
-    <button class="tab-btn" data-tab="tab-300x600">300 × 600<span class="tab-size">Half Page</span></button>
-  </div>
-
-  <div id="tab-728x90" class="tab-panel">
-    <div class="row">
-      <div class="units-row">
-        <div class="unit">
-          <h2>728 × 90 — motion</h2>
-          <iframe data-src="motion-ads/728x90.html" width="728" height="90" title="728x90 motion ad"></iframe>
+        <div class="tab-bar">
+            <button class="tab-btn active" data-tab="tab-970x250">970 × 250<span class="tab-size">Billboard</span></button>
+            <button class="tab-btn" data-tab="tab-728x90">728 × 90<span class="tab-size">Leaderboard</span></button>
+            <button class="tab-btn" data-tab="tab-320x50">320 × 50<span class="tab-size">Mobile Banner</span></button>
+            <button class="tab-btn" data-tab="tab-300x250">300 × 250<span class="tab-size">Medium Rectangle</span></button>
+            <button class="tab-btn" data-tab="tab-300x600">300 × 600<span class="tab-size">Half Page</span></button>
         </div>
-      </div>
-      <div class="units-row">
-        <div class="unit">
-          <h2>728 × 90 — motion (light)</h2>
-          <iframe data-src="motion-ads/728x90.html?light" width="728" height="90" title="728x90 motion ad — light mode"></iframe>
+
+        <div id="tab-728x90" class="tab-panel">
+            <div class="row">
+                <div class="units-row">
+                    <div class="unit">
+                        <h2>728 × 90 — motion</h2>
+                        <iframe data-src="motion-ads/728x90.html" width="728" height="90" title="728x90 motion ad"></iframe>
+                    </div>
+                </div>
+                <div class="units-row">
+                    <div class="unit">
+                        <h2>728 × 90 — motion (light)</h2>
+                        <iframe data-src="motion-ads/728x90.html?light" width="728" height="90" title="728x90 motion ad — light mode"></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-   
-  </div>
 
-  <div id="tab-970x250" class="tab-panel active">
-    <div class="row">
-      <div class="units-row">
-        <div class="unit">
-          <h2>970 × 250 — motion</h2>
-          <iframe data-src="motion-ads/970x250.html" width="970" height="250" title="970x250 motion ad"></iframe>
+        <div id="tab-970x250" class="tab-panel active">
+            <div class="row">
+                <div class="units-row">
+                    <div class="unit">
+                        <h2>970 × 250 — motion</h2>
+                        <iframe data-src="motion-ads/970x250.html" width="970" height="250" title="970x250 motion ad"></iframe>
+                    </div>
+                </div>
+                <div class="units-row">
+                    <div class="unit light-mode">
+                        <h2>970 × 250 — motion (light)</h2>
+                        <iframe data-src="motion-ads/970x250.html?light" width="970" height="250" title="970x250 motion ad — light mode"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">
+                <p class="notes-heading">Notes</p>
+                <p>Need to check with ads team about how long the ad can animate, if looping is allowed.</p>
+            </div>
         </div>
-      </div>
-      <div class="units-row">
-        <div class="unit light-mode">
-          <h2>970 × 250 — motion (light)</h2>
-          <iframe data-src="motion-ads/970x250.html?light" width="970" height="250" title="970x250 motion ad — light mode"></iframe>
+
+        <div id="tab-320x50" class="tab-panel">
+            <div class="row">
+                <div class="units-row">
+                    <div class="unit light-mode">
+                        <h2>320 × 50 — motion</h2>
+                        <iframe data-src="motion-ads/320x50.html" width="320" height="50" title="320x50 motion ad"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">
+                <p class="notes-heading">Notes</p>
+                <p>Always light background — better contrast with dark products.</p>
+                <p>This is a mobile ad, which is why it might feel small previewing on desktop.</p>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="notes">
-      <p class="notes-heading">Notes</p>
-      <p>Need to check with ads team about how long the ad can animate, if looping is allowed.</p>
-    </div>
-  </div>
 
-  <div id="tab-320x50" class="tab-panel">
-    <div class="row">
-      <div class="units-row">
-        <div class="unit light-mode">
-          <h2>320 × 50 — motion</h2>
-          <iframe data-src="motion-ads/320x50.html" width="320" height="50" title="320x50 motion ad"></iframe>
+        <div id="tab-300x250" class="tab-panel">
+            <div class="row">
+                <div class="units-row">
+                    <div class="unit">
+                        <h2>300 × 250 — motion</h2>
+                        <iframe data-src="motion-ads/300x250.html" width="300" height="250" title="300x250 motion ad"></iframe>
+                    </div>
+                    <div class="unit light-mode">
+                        <h2>300 × 250 — motion (light)</h2>
+                        <iframe data-src="motion-ads/300x250.html?light" width="300" height="250" title="300x250 motion ad — light mode"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">
+                <p class="notes-heading">Notes</p>
+                <p>Medium rectangle. Circle-reveal animation on each product swap. Similar animation concept to mobile banner.</p>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="notes">
-      <p class="notes-heading">Notes</p>
-      <p>Always light background — better contrast with dark products.</p>
-      <p>This is a mobile ad, which is why it might feel small previewing on desktop.</p>
-    </div>
-  </div>
 
-  <div id="tab-300x600" class="tab-panel">
-    <div class="row">
-      <div class="units-row">
-        <div class="unit">
-          <h2>300 × 600 — motion</h2>
-          <iframe data-src="motion-ads/300x600.html" width="300" height="600" title="300x600 motion ad"></iframe>
+        <div id="tab-300x600" class="tab-panel">
+            <div class="row">
+                <div class="units-row">
+                    <div class="unit">
+                        <h2>300 × 600 — motion</h2>
+                        <iframe data-src="motion-ads/300x600.html" width="300" height="600" title="300x600 motion ad"></iframe>
+                    </div>
+                    <div class="unit light-mode">
+                        <h2>300 × 600 — motion (light)</h2>
+                        <iframe data-src="motion-ads/300x600.html?light" width="300" height="600" title="300x600 motion ad — light mode"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="notes">
+                <p class="notes-heading">Notes</p>
+                <p>Half-page unit. Circle-reveal animation on each product swap.</p>
+            </div>
         </div>
-        <div class="unit light-mode">
-          <h2>300 × 600 — motion (light)</h2>
-          <iframe data-src="motion-ads/300x600.html?light" width="300" height="600" title="300x600 motion ad — light mode"></iframe>
-        </div>
-      </div>
-    </div>
-    <div class="notes">
-      <p class="notes-heading">Notes</p>
-      <p>Half-page unit. Circle-reveal animation on each product swap.</p>
-    </div>
-  </div>
+        '
+        <script>
+            function loadPanel(panel) {
+                panel.querySelectorAll('iframe[data-src]').forEach(function (f) {
+                    f.src = f.dataset.src;
+                });
+                panel.querySelectorAll('iframe[data-srcdoc]').forEach(function (f) {
+                    fetch(f.dataset.srcdoc)
+                        .then(function (r) {
+                            if (!r.ok) throw new Error('bad status');
+                            return r.text();
+                        })
+                        .then(function (html) {
+                            f.removeAttribute('src');
+                            f.srcdoc = html;
+                        })
+                        .catch(function () {});
+                });
+            }
 
-  <script>
-    function loadPanel(panel) {
-      panel.querySelectorAll('iframe[data-src]').forEach(function (f) {
-        f.src = f.dataset.src;
-      });
-      panel.querySelectorAll('iframe[data-srcdoc]').forEach(function (f) {
-        fetch(f.dataset.srcdoc)
-          .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.text(); })
-          .then(function (html) { f.removeAttribute('src'); f.srcdoc = html; })
-          .catch(function () {});
-      });
-    }
+            function unloadPanel(panel) {
+                panel.querySelectorAll('iframe').forEach(function (f) {
+                    f.src = 'about:blank';
+                    f.removeAttribute('srcdoc');
+                });
+            }
 
-    function unloadPanel(panel) {
-      panel.querySelectorAll('iframe').forEach(function (f) {
-        f.src = 'about:blank';
-        f.removeAttribute('srcdoc');
-      });
-    }
+            loadPanel(document.querySelector('.tab-panel.active'));
 
-    loadPanel(document.querySelector('.tab-panel.active'));
+            document.querySelectorAll('.tab-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var activePanel = document.querySelector('.tab-panel.active');
+                    if (activePanel) {
+                        unloadPanel(activePanel);
+                        activePanel.classList.remove('active');
+                    }
+                    document.querySelectorAll('.tab-btn').forEach(function (b) {
+                        b.classList.remove('active');
+                    });
 
-    document.querySelectorAll('.tab-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var activePanel = document.querySelector('.tab-panel.active');
-        if (activePanel) {
-          unloadPanel(activePanel);
-          activePanel.classList.remove('active');
-        }
-        document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
-
-        btn.classList.add('active');
-        var panel = document.getElementById(btn.dataset.tab);
-        panel.classList.add('active');
-        loadPanel(panel);
-      });
-    });
-  </script>
-</body>
+                    btn.classList.add('active');
+                    var panel = document.getElementById(btn.dataset.tab);
+                    panel.classList.add('active');
+                    loadPanel(panel);
+                });
+            });
+        </script>
+    </body>
 </html>
