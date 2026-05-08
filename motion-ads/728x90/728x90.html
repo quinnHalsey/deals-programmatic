@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="ad.size" content="width=728,height=90" />
+        <meta name="viewport" content="width=728,height=90" />
+        <title>How-To Geek — Deals Center 728×90</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html,
+            body {
+                width: 728px;
+                height: 90px;
+                overflow: hidden;
+            }
+            #ad-root {
+                position: relative;
+                width: 728px;
+                height: 90px;
+                overflow: hidden;
+                background: transparent;
+                display: flex;
+                align-items: stretch;
+            }
+            .false-background {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #202020;
+                height: 63px;
+                z-index: 0;
+            }
+            a.exit {
+                position: absolute;
+                inset: 0;
+                z-index: 10;
+                display: block;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            a.exit:focus-visible {
+                outline: 3px solid #f7941d;
+                outline-offset: -3px;
+            }
+
+            .content-section {
+                padding-top: 28px;
+            }
+
+            /* ── Logo section ── */
+            .logo-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-left: 12px;
+                gap: 5px;
+                flex: 0 0 auto;
+                overflow: hidden;
+            }
+            .logo-img {
+                display: block;
+                width: 144px;
+                height: auto;
+                transform: translateX(-220px);
+                opacity: 0;
+                animation: slide-from-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+            }
+            .logo-tagline {
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 12.5px;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                color: #f7941d;
+                text-transform: uppercase;
+                transform: translateX(-220px);
+                opacity: 0;
+                animation: slide-from-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards;
+            }
+
+            /* ── Products ── */
+            .products-area {
+                flex: 1;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+            }
+            .products {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex: 1;
+                gap: 16px;
+                overflow: hidden;
+                padding-bottom: 12px;
+            }
+            .products-2 {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                padding-bottom: 12px;
+                pointer-events: none;
+            }
+            .products-2 .product-img {
+                transform: translateY(100px);
+                opacity: 0;
+                animation: none !important;
+            }
+            .products-2 .badge {
+                transform: scale(0);
+                opacity: 0;
+                animation: none !important;
+            }
+            .product-slot {
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                width: 110px;
+                height: 90px;
+                flex: 0 0 auto;
+                /* overflow: hidden; */
+            }
+            .product-img {
+                display: block;
+                max-width: 104px;
+                max-height: 80px;
+                object-fit: contain;
+                object-position: bottom center;
+                transform: translateY(100px);
+                opacity: 0;
+                filter: drop-shadow(2px 1px 2px rgba(0, 0, 0, 0.75));
+            }
+            .product-img--mic {
+                transform: scaleX(-1), scaleY(-1), translateY(100px);
+            }
+                   
+            .product-slot:nth-child(1) .product-img {
+                animation: slide-from-bottom 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.48s forwards;
+            }
+            .product-slot:nth-child(2) .product-img {
+                animation: slide-from-bottom 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.66s forwards;
+            }
+            .product-slot:nth-child(3) .product-img {
+                animation: slide-from-bottom 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.84s forwards;
+            }
+
+            /* ── Badges ── */
+            .badge {
+                position: absolute;
+                bottom: 7px;
+                right: -10px;
+                background: #166534;
+                color: #fff;
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 10.5px;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+                padding: 4px 9px;
+                border-radius: 999px;
+                white-space: nowrap;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+                transform: scale(0);
+                opacity: 0;
+                transform-origin: center center;
+            }
+            .product-slot:nth-child(1) .badge {
+                animation: pill-bounce-in 0.5s ease-out 1s forwards;
+            }
+            .product-slot:nth-child(2) .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.18s forwards;
+            }
+            .product-slot:nth-child(3) .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.36s forwards;
+            }
+
+            .product-slot--cam .badge {
+                right: -20px;
+            }
+
+            .product-slot--ring .badge {
+                right: 5px;
+            }
+
+            /* ── CTA ── */
+            .cta-wrap {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-right: 12px;
+                flex: 0 0 auto;
+                transform: translateX(200px);
+                opacity: 0;
+                animation: slide-from-right 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.28s forwards;
+            }
+            .cta-btn {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 16px;
+                border-radius: 4px;
+                background: linear-gradient(135deg, #e95620, #c83c19);
+                box-shadow: 0 3px 16px rgba(210, 70, 25, 0.4);
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                color: #fff;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .cta-btn::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 4px;
+                background: linear-gradient(135deg, #c6491b 0%, #aa3315 100%);
+                opacity: 0;
+                transition: opacity 0.25s ease;
+                pointer-events: none;
+            }
+            .cta-btn svg {
+                position: relative;
+                flex-shrink: 0;
+                width: 16px;
+                height: 16px;
+                transition: transform 0.25s ease;
+            }
+            .cta-btn span {
+                position: relative;
+            }
+            #ad-root:hover .cta-btn::before,
+            #ad-root:focus-within .cta-btn::before {
+                opacity: 1;
+            }
+            #ad-root.looping .cta-btn {
+                animation: cta-shadow-pulse 1.1s ease-in-out infinite;
+            }
+            #ad-root.looping .cta-btn svg {
+                animation: arrow-nudge 0.8s ease-in-out infinite;
+            }
+            #ad-root.looping .products-2 .product-img.product-img--router {
+                opacity: 1 !important;
+                animation: product-float 3s ease-in-out infinite !important;
+            }
+            #ad-root:hover .cta-btn,
+            #ad-root:focus-within .cta-btn {
+                animation: cta-shadow-pulse 1.1s ease-in-out infinite;
+            }
+            #ad-root:hover .cta-btn svg,
+            #ad-root:focus-within .cta-btn svg {
+                animation: arrow-nudge 0.8s ease-in-out infinite;
+            }
+
+            /* ── Keyframes ── */
+            @keyframes slide-from-left {
+                from {
+                    transform: translateX(-220px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slide-from-right {
+                from {
+                    transform: translateX(200px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slide-from-bottom {
+                from {
+                    transform: translateY(100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes pill-bounce-in {
+                0% {
+                    transform: scale(0);
+                    opacity: 0;
+                }
+                12% {
+                    opacity: 1;
+                }
+                68% {
+                    transform: scale(1.12);
+                }
+                82% {
+                    transform: scale(0.94);
+                }
+                94% {
+                    transform: scale(1.03);
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+            @keyframes arrow-nudge {
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+                50% {
+                    transform: translateX(4px);
+                }
+            }
+            @keyframes product-float {
+                0%, 100% { transform: translateY(0); }
+                50%       { transform: translateY(-2px); }
+            }
+            @keyframes cta-shadow-pulse {
+                0%,
+                100% {
+                    box-shadow:
+                        0 3px 16px rgba(192, 86, 32, 0.45),
+                        0 0 0 0px rgba(192, 86, 32, 0);
+                }
+                50% {
+                    box-shadow:
+                        0 5px 24px rgba(192, 86, 32, 0.75),
+                        0 0 0 4px rgba(192, 86, 32, 0.15);
+                }
+            }
+
+            /* ── Tagline (phase 2) ── */
+            .tagline-wrap {
+                position: absolute;
+                left: 165px;
+                right: 255px;
+                top: 0;
+                bottom: 0;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transform: translateY(-16px);
+                pointer-events: none;
+            }
+            .tagline {
+                font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                font-size: 17px;
+                font-weight: 300;
+                color: #fff;
+                line-height: 1.25;
+                white-space: nowrap;
+            }
+            .tagline strong {
+                font-weight: 800;
+            }
+
+            /* ── Phase 2: exit slots 1 & 2, enter tagline ── */
+            .phase-2 .product-slot:nth-child(1) .badge {
+                animation: pill-shrink-out 0.28s ease-in 0s both;
+            }
+            .phase-2 .product-slot:nth-child(2) .badge {
+                animation: pill-shrink-out 0.28s ease-in 0.08s both;
+            }
+            .phase-2 .product-slot:nth-child(1) .product-img {
+                animation: slide-to-bottom 0.48s cubic-bezier(0.4, 0, 1, 1) 0.14s both;
+            }
+            .phase-2 .product-slot:nth-child(2) .product-img {
+                animation: slide-to-bottom 0.48s cubic-bezier(0.4, 0, 1, 1) 0.24s both;
+            }
+            .phase-2 .tagline-wrap {
+                animation: tagline-slide-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+            }
+            .phase-2 .tagline strong {
+                animation: text-fill-orange 0.5s ease-out 1.05s both;
+            }
+
+            @keyframes pill-shrink-out {
+                from { transform: scale(1); opacity: 1; }
+                to   { transform: scale(0); opacity: 0; }
+            }
+            @keyframes slide-to-bottom {
+                from { transform: translateY(0);    opacity: 1; }
+                to   { transform: translateY(100px); opacity: 0; }
+            }
+            @keyframes tagline-slide-in {
+                from { transform: translateY(-16px); opacity: 0; }
+                to   { transform: translateY(0);     opacity: 1; }
+            }
+            @keyframes tagline-slide-out {
+                from { transform: translateY(0);     opacity: 1; }
+                to   { transform: translateY(-20px); opacity: 0; }
+            }
+            @keyframes slide-from-left-product {
+                from { transform: translateX(-300px); opacity: 0; }
+                to   { transform: translateX(0);      opacity: 1; }
+            }
+            @keyframes text-fill-orange {
+                from { color: #fff; }
+                to   { color: #f7941d; }
+            }
+
+            /* ── Tagline 2 (phase 4) ── */
+            .tagline-wrap-2 {
+                position: absolute;
+                left: 275px;
+                right: 140px;
+                top: 0;
+                bottom: 0;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transform: translateY(-16px);
+                pointer-events: none;
+            }
+
+            /* ── Phase 3: exit tagline + slot-3, enter new products ── */
+            .phase-3 .product-slot:nth-child(3) .badge {
+                animation: pill-shrink-out 0.28s ease-in 0s both;
+            }
+            .phase-3 .tagline-wrap {
+                animation: tagline-slide-out 0.45s cubic-bezier(0.4, 0, 1, 1) 0.1s both;
+            }
+            .phase-3 .products-1 .product-slot:nth-child(3) .product-img {
+                animation: slide-to-bottom 0.48s cubic-bezier(0.4, 0, 1, 1) 0.2s both;
+            }
+
+            /* New products enter from bottom */
+            .phase-3 .products-2 .product-slot:nth-child(1) .product-img {
+                animation: slide-from-bottom 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both !important;
+            }
+            .phase-3 .products-2 .product-slot:nth-child(2) .product-img {
+                animation: slide-from-bottom 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.76s both !important;
+            }
+            .phase-3 .products-2 .product-slot:nth-child(3) .product-img {
+                animation: slide-from-bottom 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.92s both !important;
+            }
+            .phase-3 .products-2 .product-slot:nth-child(1) .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.12s both !important;
+            }
+            .phase-3 .products-2 .product-slot:nth-child(2) .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.3s both !important;
+            }
+            .phase-3 .products-2 .product-slot:nth-child(3) .badge {
+                animation: pill-bounce-in 0.5s ease-out 1.48s both !important;
+            }
+
+            /* ── Phase 4: exit products-2 slots 2 & 3, enter tagline 2 ── */
+            .phase-4 .products-2 .product-slot:nth-child(2) .badge {
+                animation: pill-shrink-out 0.28s ease-in 0s both !important;
+            }
+            .phase-4 .products-2 .product-slot:nth-child(3) .badge {
+                animation: pill-shrink-out 0.28s ease-in 0.08s both !important;
+            }
+            .phase-4 .products-2 .product-slot:nth-child(2) .product-img {
+                animation: slide-to-bottom 0.48s cubic-bezier(0.4, 0, 1, 1) 0.14s both !important;
+            }
+            .phase-4 .products-2 .product-slot:nth-child(3) .product-img {
+                animation: slide-to-bottom 0.48s cubic-bezier(0.4, 0, 1, 1) 0.24s both !important;
+            }
+            .phase-4 .tagline-wrap-2 {
+                animation: tagline-slide-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+            }
+            .phase-4 .tagline-wrap-2 .tagline strong {
+                color: #fff !important;
+                animation: none !important;
+            }
+
+            /* ── Light mode ── */
+            .logo-img--light { display: none; }
+            /* text-fill starts from dark instead of white */
+            @keyframes text-fill-orange-light {
+                from { color: #1a1f2e; }
+                to   { color: #f7941d; }
+            }
+            @media (prefers-color-scheme: light) {
+                .false-background { background: #e2e4e8; }
+                .tagline { color: #1a1f2e; }
+                .logo-img--dark { display: none; }
+                .logo-img--light { display: block; }
+                .phase-2 .tagline strong { animation-name: text-fill-orange-light; }
+                /* phase-4 strong is hard-coded #fff — override for light */
+                .phase-4 .tagline-wrap-2 .tagline strong { color: #1a1f2e !important; }
+            }
+
+            /* ── Reduced motion ── */
+            @media (prefers-reduced-motion: reduce) {
+                #ad-root.looping .cta-btn,
+                #ad-root.looping .cta-btn svg,
+                #ad-root.looping .product-img--router {
+                    animation: none !important;
+                }
+                .logo-img,
+                .logo-tagline {
+                    animation: none !important;
+                    transform: translateX(0) !important;
+                    opacity: 1 !important;
+                }
+                .product-img {
+                    animation: none !important;
+                    transform: translateY(0) !important;
+                    opacity: 1 !important;
+                }
+                .badge {
+                    animation: none !important;
+                    transform: scale(1) !important;
+                    opacity: 1 !important;
+                }
+                .cta-wrap {
+                    animation: none !important;
+                    transform: translateX(0) !important;
+                    opacity: 1 !important;
+                }
+                .phase-2 .product-slot:nth-child(1) .badge,
+                .phase-2 .product-slot:nth-child(2) .badge {
+                    animation: none !important;
+                    transform: scale(0) !important;
+                    opacity: 0 !important;
+                }
+                .phase-2 .product-slot:nth-child(1) .product-img,
+                .phase-2 .product-slot:nth-child(2) .product-img {
+                    animation: none !important;
+                    transform: translateY(100px) !important;
+                    opacity: 0 !important;
+                }
+                .phase-2 .tagline-wrap {
+                    animation: none !important;
+                    transform: translateY(0) !important;
+                    opacity: 1 !important;
+                }
+                .phase-2 .tagline strong {
+                    animation: none !important;
+                    color: #f7941d !important;
+                }
+                .products-2 .product-img {
+                    transform: translateY(0) !important;
+                    opacity: 0 !important;
+                }
+                .products-2 .badge {
+                    transform: scale(1) !important;
+                    opacity: 0 !important;
+                }
+                .phase-3 .products-1 .product-slot:nth-child(3) .product-img {
+                    animation: none !important;
+                    transform: translateY(100px) !important;
+                    opacity: 0 !important;
+                }
+                .phase-3 .tagline-wrap {
+                    animation: none !important;
+                    transform: translateY(0) !important;
+                    opacity: 0 !important;
+                }
+                .phase-3 .products-2 .product-img {
+                    opacity: 1 !important;
+                }
+                .phase-3 .products-2 .badge {
+                    opacity: 1 !important;
+                }
+                .phase-4 .products-2 .product-slot:nth-child(2) .product-img,
+                .phase-4 .products-2 .product-slot:nth-child(3) .product-img {
+                    animation: none !important;
+                    transform: translateY(100px) !important;
+                    opacity: 0 !important;
+                }
+                .phase-4 .products-2 .product-slot:nth-child(2) .badge,
+                .phase-4 .products-2 .product-slot:nth-child(3) .badge {
+                    animation: none !important;
+                    transform: scale(0) !important;
+                    opacity: 0 !important;
+                }
+                .phase-4 .tagline-wrap-2 {
+                    animation: none !important;
+                    transform: translateY(0) !important;
+                    opacity: 1 !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ad-root" role="region" aria-label="Advertisement: How-To Geek Deals Center">
+            <a class="exit" id="click" href="#" target="_blank" rel="noopener noreferrer" aria-label="Shop How-To Geek Deals — opens in new tab"></a>
+            <div class="false-background" aria-hidden="true"></div>
+
+            <!-- Logo -->
+            <div class="logo-section content-section">
+                <img class="logo-img logo-img--dark" src="assets/htg-logo.svg" alt="How-To Geek" width="144" height="24" decoding="async" />
+                <img class="logo-img logo-img--light" src="assets/htg-logo-dark.svg" alt="How-To Geek" width="144" height="24" decoding="async" />
+                <span class="logo-tagline">Deals Center</span>
+            </div>
+
+            <!-- Products -->
+            <div class="products-area">
+                <div class="products products-1">
+                    <div class="product-slot product-slot--cam">
+                        <img class="product-img" src="assets/sony-vlog-camera.png" alt="Sony vlog camera" decoding="async" />
+                        <div class="badge">-$152</div>
+                    </div>
+                    <div class="product-slot">
+                        <img class="product-img product-img--mic" src="assets/mic.png" alt="USB microphone" decoding="async" />
+                        <div class="badge">-10%</div>
+                    </div>
+                    <div class="product-slot">
+                        <img class="product-img" src="assets/razer-gaming-headset.png" alt="Razer gaming headset" decoding="async" />
+                        <div class="badge">-50%</div>
+                    </div>
+                </div>
+                <div class="products products-2">
+                    <div class="product-slot">
+                        <img class="product-img product-img--router" src="assets/router.png" alt="Wi-Fi router" loading="lazy" decoding="async" />
+                        <div class="badge">-35%</div>
+                    </div>
+                    <div class="product-slot">
+                        <img class="product-img" src="assets/sony-wh-1000-xm5-headphones.png" alt="Sony WH-1000XM5 wireless headphones" loading="lazy" decoding="async" />
+                        <div class="badge">-$122</div>
+                    </div>
+                    <div class="product-slot product-slot--ring">
+                        <img class="product-img" src="assets/ring-doorbell.png" alt="Ring video doorbell" loading="lazy" decoding="async" />
+                        <div class="badge">-$50</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tagline (phase 2) -->
+            <div class="tagline-wrap content-section" aria-hidden="true">
+                <p class="tagline">Up to <strong>50% off</strong> curated tech.</p>
+            </div>
+
+            <!-- Tagline 2 (phase 4) -->
+            <div class="tagline-wrap-2 content-section" aria-hidden="true">
+                <p class="tagline"><strong>Don't pay full price for tech.</strong></p>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-wrap content-section">
+                <div class="cta-btn">
+                    <span>Shop All Deals</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var clickTag = 'https://www.howtogeek.com/deals/';
+            document.getElementById('click').addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open(clickTag, '_blank', 'noopener,noreferrer');
+            });
+
+            setTimeout(function () {
+                document.getElementById('ad-root').classList.add('phase-2');
+            }, 3000);
+
+            setTimeout(function () {
+                var root = document.getElementById('ad-root');
+                root.classList.add('phase-3');
+                root.querySelector('.products-2').style.pointerEvents = 'auto';
+            }, 5500);
+
+            setTimeout(function () {
+                document.getElementById('ad-root').classList.add('phase-4');
+            }, 8500);
+
+            setTimeout(function () {
+                document.getElementById('ad-root').classList.add('looping');
+            }, 10000);
+        </script>
+    </body>
+</html>
