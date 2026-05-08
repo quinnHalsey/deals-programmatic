@@ -423,38 +423,6 @@
                 }
             }
 
-            /* ── XDA mode ── */
-            .logo-img--xda { display: none; }
-            body.xda-mode .logo-img--dark,
-            body.xda-mode .logo-img--light { display: none; }
-            body.xda-mode .logo-img--xda { display: block; width: 120px; }
-            body.xda-mode a.exit:focus-visible { outline-color: #a601c8; }
-            body.xda-mode .deals-label { color: #a601c8; }
-            body.xda-mode .divider { background: rgba(166, 1, 200, 0.55); }
-            body.xda-mode .cta-btn {
-                background: linear-gradient(135deg, #a601c8, #7800a0);
-                box-shadow: 0 4px 16px rgba(166, 1, 200, 0.4);
-            }
-            body.xda-mode .cta-btn::before {
-                background: linear-gradient(135deg, #8a00a8 0%, #640090 100%);
-            }
-            @keyframes text-fill-xda {
-                from { color: #fff; }
-                to   { color: #a601c8; }
-            }
-            body.xda-mode .tagline-wrap .tagline strong,
-            body.xda-mode .phase-2 .tagline-wrap-2 .tagline strong,
-            body.xda-mode .phase-3 .tagline-wrap .tagline strong {
-                animation-name: text-fill-xda;
-            }
-            @keyframes cta-shadow-pulse-xda {
-                0%, 100% { box-shadow: 0 4px 16px rgba(166, 1, 200, 0.45), 0 0 0 0px rgba(166, 1, 200, 0); }
-                50%       { box-shadow: 0 6px 26px rgba(166, 1, 200, 0.75), 0 0 0 4px rgba(166, 1, 200, 0.15); }
-            }
-            body.xda-mode #ad-root.looping .cta-btn,
-            body.xda-mode #ad-root:hover .cta-btn,
-            body.xda-mode #ad-root:focus-within .cta-btn { animation-name: cta-shadow-pulse-xda; }
-
             /* ── Between-cycle idle: freeze products-1 + tagline-1 in place so loop is seamless ── */
             .phase-idle .tagline-wrap {
                 animation: none !important;
@@ -592,7 +560,6 @@
             <div class="header">
                 <img class="logo-img logo-img--dark" src="assets/htg-logo.svg" alt="How-To Geek" width="148" height="25" decoding="async" />
                 <img class="logo-img logo-img--light" src="assets/htg-logo-dark.svg" alt="How-To Geek" width="148" height="25" decoding="async" />
-                <img class="logo-img logo-img--xda" src="assets/xda-logo-full-colored-light.svg" alt="XDA Developers" width="120" height="35" decoding="async" />
                 <span class="deals-label">Deals Center</span>
                 <div class="divider" aria-hidden="true"></div>
             </div>
@@ -643,12 +610,7 @@
         </div>
 
         <script>
-            if (/[?&]xda/.test(location.search)) document.body.classList.add('xda-mode');
-        </script>
-        <script>
-            var clickTag = document.body.classList.contains('xda-mode')
-                ? 'https://www.xda-developers.com/deals/'
-                : 'https://www.howtogeek.com/deals/';
+            var clickTag = 'https://www.howtogeek.com/deals/';
             document.getElementById('click').addEventListener('click', function (e) {
                 e.preventDefault();
                 window.open(clickTag, '_blank', 'noopener,noreferrer');
