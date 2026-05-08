@@ -59,7 +59,7 @@
             }
             .logo-img {
                 display: block;
-                width: 120px;
+                width: 100px;
                 height: auto;
                 transform: translateY(-30px);
                 opacity: 0;
@@ -68,9 +68,10 @@
             .deals-label {
                 font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
                 font-size: 14px;
+                line-height: 1;
                 font-weight: 700;
                 letter-spacing: 0.26em;
-                color: #a601c8;
+                color: #c44de0;
                 text-transform: uppercase;
                 transform: translateY(-16px);
                 opacity: 0;
@@ -310,7 +311,7 @@
             }
             @keyframes text-fill-orange {
                 from { color: #fff; }
-                to   { color: #a601c8; }
+                to   { color: #c44de0; }
             }
             @keyframes arrow-nudge {
                 0%, 100% { transform: translateX(0); }
@@ -395,6 +396,9 @@
             body.light-mode #ad-root {
                 background: #e2e4e8;
             }
+            body.light-mode .deals-label {
+                color: #a601c8;
+            }
             body.light-mode .tagline {
                 color: #1a1f2e;
             }
@@ -405,7 +409,7 @@
             body.light-mode .tagline-wrap .tagline strong,
             body.light-mode .phase-2 .tagline-wrap-2 .tagline strong,
             body.light-mode .phase-3 .tagline-wrap .tagline strong {
-                animation-name: text-fill-orange-light;
+                animation-name: text-fill-orange-light !important;
             }
             .logo-light-bg { display: none; }
             body.light-mode .logo-dark-bg  { display: none; }
@@ -438,6 +442,9 @@
                 }
                 .tagline-wrap .tagline strong {
                     animation: none !important;
+                    color: #c44de0 !important;
+                }
+                body.light-mode .tagline-wrap .tagline strong {
                     color: #a601c8 !important;
                 }
                 .tagline-wrap-2 { opacity: 0 !important; }
@@ -473,6 +480,9 @@
                 }
                 .phase-2 .tagline-wrap-2 .tagline strong {
                     animation: none !important;
+                    color: #c44de0 !important;
+                }
+                body.light-mode .phase-2 .tagline-wrap-2 .tagline strong {
                     color: #a601c8 !important;
                 }
                 /* phase-3: products-2 hidden, products-1 visible, tagline-1 visible */
@@ -507,6 +517,9 @@
                 }
                 .phase-3 .tagline-wrap .tagline strong {
                     animation: none !important;
+                    color: #c44de0 !important;
+                }
+                body.light-mode .phase-3 .tagline-wrap .tagline strong {
                     color: #a601c8 !important;
                 }
                 #ad-root.looping .cta-btn,
@@ -523,7 +536,7 @@
             <!-- Header -->
             <div class="header">
                 <img class="logo-img logo-dark-bg"  src="../assets/xda-logo-full-colored-light.svg"      alt="XDA" width="120" height="35" decoding="async" />
-                <img class="logo-img logo-light-bg" src="../assets/xda-logo-full-colored-light_dark.svg" alt="XDA" width="120" height="35" decoding="async" />
+                <img class="logo-img logo-light-bg" src="../assets/xda-logo-full-colored-dark.svg" alt="XDA" width="120" height="35" decoding="async" />
                 <span class="deals-label">Deals Center</span>
             </div>
 
@@ -593,8 +606,10 @@
                 setTimeout(function () {
                     root.classList.add('phase-2');
                     setTimeout(function () {
-                        root.classList.add('phase-3');
-                        setTimeout(function () {
+                    root.classList.add('phase-3');
+                    var s = root.querySelector('.tagline-wrap .tagline strong');
+                    if (s) { s.style.setProperty('animation-name','none','important'); void s.offsetWidth; s.style.removeProperty('animation-name'); }
+                    setTimeout(function () {
                             root.classList.remove('phase-2', 'phase-3');
                             void root.offsetWidth;
                             runCycle();

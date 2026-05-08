@@ -52,13 +52,12 @@
                 justify-content: center;
                 padding-left: 8px;
                 padding-right: 6px;
-                gap: 3px;
                 flex: 0 0 auto;
                 overflow: hidden;
             }
             .logo-img {
                 display: block;
-                width: 88px;
+                width: 60px;
                 height: auto;
                 transform: translateX(-140px);
                 opacity: 0;
@@ -67,6 +66,7 @@
             .logo-tagline {
                 font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
                 font-size: 16px;
+                line-height: 1;
                 font-weight: 700;
                 letter-spacing: 0.1em;
                 color: #1a1f2e;
@@ -231,8 +231,8 @@
                 gap: 6px;
                 padding: 8px 13px;
                 border-radius: 4px;
-                background: linear-gradient(135deg, #a601c8, #ff398b);
-                box-shadow: 0 2px 10px rgba(255, 57, 139, 0.4);
+                background: linear-gradient(135deg, #a601c8, #7800a0);
+                box-shadow: 0 2px 10px rgba(166, 1, 200, 0.4);
                 font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
                 font-size: 12px;
                 font-weight: 700;
@@ -323,10 +323,10 @@
             }
             @keyframes cta-shadow-pulse {
                 0%, 100% {
-                    box-shadow: 0 2px 10px rgba(255, 57, 139, 0.45), 0 0 0 0px rgba(255, 57, 139, 0);
+                    box-shadow: 0 2px 10px rgba(166, 1, 200, 0.45), 0 0 0 0px rgba(166, 1, 200, 0);
                 }
                 50% {
-                    box-shadow: 0 4px 18px rgba(255, 57, 139, 0.75), 0 0 0 3px rgba(255, 57, 139, 0.15);
+                    box-shadow: 0 4px 18px rgba(166, 1, 200, 0.75), 0 0 0 3px rgba(166, 1, 200, 0.15);
                 }
             }
 
@@ -484,7 +484,7 @@
 
             <!-- Logo -->
             <div class="logo-section">
-                <img class="logo-img" src="../assets/xda-logo-full-colored-light.svg" alt="XDA Developers" width="80" height="24" decoding="async" />
+                <img class="logo-img" src="../assets/xda-logo-full-colored-dark.svg" alt="XDA Developers" width="80" height="24" decoding="async" />
                 <span class="logo-tagline">Deals</span>
             </div>
 

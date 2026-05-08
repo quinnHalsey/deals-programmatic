@@ -68,6 +68,7 @@
             .deals-label {
                 font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
                 font-size: 14px;
+                line-height: 1;
                 font-weight: 700;
                 letter-spacing: 0.26em;
                 color: #f7941d;
@@ -668,8 +669,15 @@
                     root.classList.remove('phase-idle');
                     root.classList.add('phase-2');
                     setTimeout(function () {
-                        root.classList.add('phase-3');
-                        setTimeout(function () {
+                    root.classList.add('phase-3');
+                    // Force-restart the text-fill animation on the re-entering tagline-1
+                    // strong. Without this, in dark mode the animation already fired
+                    // off-screen during the phase-2 exit (name never changed), so
+                    // phase-3 sees the same name and skips it. In light mode the
+                    // competing !important rules cause a double-flash instead.
+                    var s = root.querySelector('.tagline-wrap .tagline strong');
+                    if (s) { s.style.setProperty('animation-name','none','important'); void s.offsetWidth; s.style.removeProperty('animation-name'); }
+                    setTimeout(function () {
                             // Freeze elements in visible state before removing phase classes
                             // so there is no jump back to off-screen on loop reset
                             root.classList.add('phase-idle');

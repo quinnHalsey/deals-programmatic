@@ -83,7 +83,7 @@
                 font-size: 13px;
                 font-weight: 700;
                 letter-spacing: 0.28em;
-                color: #a601c8;
+                color: #c44de0;
                 text-transform: uppercase;
                 transform: translateY(-20px);
                 opacity: 0;
@@ -360,7 +360,7 @@
             }
             @keyframes text-fill-orange {
                 from { color: #fff; }
-                to   { color: #a601c8; }
+                to   { color: #c44de0; }
             }
             @keyframes arrow-nudge {
                 0%, 100% { transform: translateX(0); }
@@ -441,6 +441,9 @@
             body.light-mode #ad-root {
                 background: #e2e4e8;
             }
+            body.light-mode .deals-label {
+                color: #a601c8;
+            }
             body.light-mode .tagline {
                 color: #1a1f2e;
             }
@@ -497,6 +500,9 @@
                 }
                 .tagline-wrap .tagline strong {
                     animation: none !important;
+                    color: #c44de0 !important;
+                }
+                body.light-mode .tagline-wrap .tagline strong {
                     color: #a601c8 !important;
                 }
                 .tagline-wrap-2,
@@ -520,6 +526,9 @@
                 }
                 .phase-2 .tagline-wrap-2 .tagline strong {
                     animation: none !important;
+                    color: #c44de0 !important;
+                }
+                body.light-mode .phase-2 .tagline-wrap-2 .tagline strong {
                     color: #a601c8 !important;
                 }
                 /* phase 3 */
@@ -554,7 +563,7 @@
             <!-- Header -->
             <div class="header">
                 <img class="logo-img logo-dark-bg"  src="../assets/xda-logo-full-colored-light.svg"      alt="XDA" width="152" height="45" decoding="async" />
-                <img class="logo-img logo-light-bg" src="../assets/xda-logo-full-colored-light_dark.svg" alt="XDA" width="152" height="45" decoding="async" />
+                <img class="logo-img logo-light-bg" src="../assets/xda-logo-full-colored-dark.svg" alt="XDA" width="152" height="45" decoding="async" />
                 <span class="deals-label">Deals Center</span>
                 <div class="divider"></div>
             </div>
